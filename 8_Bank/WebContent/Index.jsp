@@ -68,7 +68,9 @@
           <div class="col-md-6 order-1">
             <div class="p-5">
               <h2 class="display-4">NOSOTROS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+              <p>Tiene como objetivo principal brindar el mejor servicio con  
+                 la mas alta calidad y cumpliendo con las necesidades del cliente. 
+                 Proporcionando tarifas accesibles a toda clase de personas, ofreciendo calidad en nuestro trabajo.</p>
             </div>
           </div>
         </div>
@@ -109,7 +111,11 @@
           <div class="col-md-6 order-1">
             <div class="p-5">
               <h2 class="display-4">Let there be rock!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+              <p><dd><span>Telefono:</span><h6>000 000 000</h6></dd>
+                 <dd><span>Email:</span><h6>8bank@gmail.com</h6></dd>
+                 <dd><span>Dirección:</span><h6>Edificio STAFF</h6></dd>
+                 <dd><span>Ciudad:</span><h6>Medellin</h6></dd>
+                                                         
             </div>
           </div>
         </div>
@@ -119,7 +125,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 8 Bank 2017</p>
       </div>
       <!-- /.container -->
     </footer>
