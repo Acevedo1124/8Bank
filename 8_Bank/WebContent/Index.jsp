@@ -86,11 +86,11 @@
           <div class="col-md-6">
             <div class="p-5">
               <h2 class="display-4">VALORES EMPRESARIALES</h2>
-              <p>Compromiso: cumpiendo en tiempo y forma con las expectativas de nuestros clientes.
-                Responsabilidad: nos hacemos responsables de sus productos
+              <p><li>Compromiso: cumpiendo en tiempo y forma con las expectativas de nuestros clientes.</li>
+              	  <li>Responsabilidad: nos hacemos responsables de sus productos. </li>
                   <li>Confianza: deja sus motocicleta en las mejores manos. </li>
                   <li>Honestidad: garantizando la buena calidad del trabajo así como los repuestos utilizadas.</li>
-                  <li>Lealtad: guiandonos de manera fiel ante nuestros socios comerciales y empleados.</li></h6>
+                  <li>Lealtad: guiandonos de manera fiel ante nuestros socios comerciales y empleados.</li>
                                                                 </p>
             </div>
           </div>
