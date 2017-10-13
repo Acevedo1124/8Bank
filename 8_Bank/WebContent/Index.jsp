@@ -51,8 +51,8 @@
     <header class="masthead">
       <div class="overlay">
         <div class="container">
-          <h1 class="display-1 text-white">One Page Wonder</h1>
-          <h2 class="display-4 text-white">Will Rock Your Socks Off</h2>
+          <h1 class="display-1 text-white">8 BANK</h1>
+          <h2 class="display-4 text-white">Hacemos parte de ti</h2>
         </div>
       </div>
     </header>
