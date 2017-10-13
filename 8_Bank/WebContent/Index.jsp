@@ -62,12 +62,12 @@
         <div class="row align-items-center">
           <div class="col-md-6 order-2">
             <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=836" alt="">
+              <img class="img-fluid rounded-circle" src="https://au.res.keymedia.com/files/image/Canada/hrdaily/multi%20ethnic%20team.jpg" alt="">
             </div>
           </div>
           <div class="col-md-6 order-1">
             <div class="p-5">
-              <h2 class="display-4">For those about to rock...</h2>
+              <h2 class="display-4">NOSOTROS</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
             </div>
           </div>
@@ -80,13 +80,18 @@
         <div class="row align-items-center">
           <div class="col-md-6">
             <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=452" alt="">
+              <img class="img-fluid rounded-circle" src="https://www.economiafinanzas.com/wp-content/uploads/2016/06/Tipos-de-Bancos-y-como-funcionan.jpg" alt="">
             </div>
           </div>
           <div class="col-md-6">
             <div class="p-5">
-              <h2 class="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+              <h2 class="display-4">VALORES EMPRESARIALES</h2>
+              <p>Compromiso: cumpiendo en tiempo y forma con las expectativas de nuestros clientes.
+                Responsabilidad: nos hacemos responsables de sus productos
+                  <li>Confianza: deja sus motocicleta en las mejores manos. </li>
+                  <li>Honestidad: garantizando la buena calidad del trabajo así como los repuestos utilizadas.</li>
+                  <li>Lealtad: guiandonos de manera fiel ante nuestros socios comerciales y empleados.</li></h6>
+                                                                </p>
             </div>
           </div>
         </div>
@@ -98,7 +103,7 @@
         <div class="row align-items-center">
           <div class="col-md-6 order-2">
             <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=453" alt="">
+              <img class="img-fluid rounded-circle" src="https://www.ellibrepensador.com/wp-content/uploads/2017/08/master-finanzas.jpg" alt="">
             </div>
           </div>
           <div class="col-md-6 order-1">
