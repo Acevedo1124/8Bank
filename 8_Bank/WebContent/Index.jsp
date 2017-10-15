@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>8 BANK</title>
+    <title>GRUPO 8BANK</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
               <a class="nav-link" href="#">LOGIN</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">SERVICIOS</a>
+              <a class="nav-link" href="Servicios.jsp">SERVICIOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">CONTACTANOS</a>
+              <a class="nav-link" href="Contacto.jsp">CONTACTANOS</a>
             </li>
           </ul>
         </div>
@@ -110,9 +110,9 @@
           </div>
           <div class="col-md-6 order-1">
             <div class="p-5">
-              <h2 class="display-4">Let there be rock!</h2>
+              <h2 class="display-4">INFORMACION</h2>
               <p><dd><span>Telefono:</span><h6>000 000 000</h6></dd>
-                 <dd><span>Email:</span><h6>8bank@gmail.com</h6></dd>
+                 <dd><span>Email:</span><h6>grupo8bank@gmail.com</h6></dd>
                  <dd><span>Dirección:</span><h6>Edificio STAFF</h6></dd>
                  <dd><span>Ciudad:</span><h6>Medellin</h6></dd>
                                                          
@@ -125,7 +125,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 8 Bank 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Grupo 8Bank 2017</p>
       </div>
       <!-- /.container -->
     </footer>
