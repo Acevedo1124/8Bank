@@ -65,6 +65,7 @@ public class Metodos {
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = null;
 		resulSet = statement.executeQuery(sql);
+		
 
 		if(resulSet.next()) {
 			con.desconectar();

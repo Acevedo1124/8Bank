@@ -31,7 +31,7 @@ function Login(){
 	location.href = url;
 }
 </script>
-<input type="text" name="rol" id="Usr" />
+<input type="text" id="Usr" />
 <input type="button" style="heigth:2em;" value="Ir" onclick="Login()"/>
 
 
