@@ -24,40 +24,15 @@
  %>
 
 
-<h1>Bienvenido, los datos que has ingresado son:</h1>
+<h1><%= resultado %></h1>
 
 <p>&nbsp;</p>
 
-<form id="formulario1" method="get" name="Formulario1" >
-<table border="0" cellpadding="1" cellspacing="1" style="width:500px;">
-	<tbody>
-		<tr>
-			<td>Codigo</td>
-			<td><%= vid  %></td>
-		</tr>
-		<tr>
-			<td>Nombre</td>
-			<td><%= vnombre %></td>
-		</tr>
-		<tr>
-			<td>Codigo departamento</td>
-			<td><%= vidDepart %></td>
-		</tr>
-		<tr>
-			<td>Identificación</td>
-			<td><%= videntificacion %></td>
-		</tr>
-	</tbody>
-</table>
+<form id="formulario2" name="Formulario2" >
 
 <p>&nbsp;</p>
-
-<p><input name="Enviar" type="submit" value="Enviar" /></p>
+<a href="RegistroCiudades.html"><input name="Volver" type="button" value="Ingresar nuevo" /></a>
 </form>
-
-<h1>El resultado es:</h1>
-
-<p><%= resultado %></p>
 
 
 <p>&nbsp;</p>

@@ -1,9 +1,9 @@
 package Model;
 
 import java.sql.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import util.Conexion;
-import Entity.Ciudades;
+//import Entity.Ciudades;
 
 public class CiudadDao {
 	Conexion conexion;
@@ -39,13 +39,14 @@ public class CiudadDao {
 		return rptaRegsitro;
 	}
 	
-	public ArrayList<Ciudades> ListarCiudades(){
+	/*public ArrayList<Ciudades> ListarCiudades(){
 		ArrayList ListarCiudades = new ArrayList();
 		Ciudades ciudad;
 		try {
 			Connection acceDB = conexion.getConexion();
-			PreparedStatement ps = acceDB.prepareStatement("select * from tb_ciuadades;");
-			ResultSet rs=ps.executeQuery();
+			String sql = "select * from tb_ciuadades";
+			PreparedStatement statement = acceDB.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
 			while(rs.next()) {
 				ciudad = new Ciudades();
 				ciudad.setId(rs.getInt(1));
@@ -60,5 +61,5 @@ public class CiudadDao {
 		}
 		
 		return ListarCiudades;
-	}
+	}*/
 }
