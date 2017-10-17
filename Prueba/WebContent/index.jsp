@@ -23,8 +23,22 @@
 	}
 </style>
 <body>
+
+
+<script type="text/javascript">
+function Login(){
+	var url = "ControlRol?Usr="+ document.getElementById("Usr").value ;
+	location.href = url;
+}
+</script>
+<input type="text" name="rol" id="Usr" />
+<input type="button" style="heigth:2em;" value="Ir" onclick="Login()"/>
+
+
 <div id="cabecera">
 	<img id="logo" src="/Prueba/Img/rocket-icon.png"/>
-</div><input type="button" style="heigth:2em;" value="${intento}" onclick="location.href('ControlPrueba')" />
+	<input type="button" style="heigth:2em;" value="${Respuesta}"  />
+	
+</div>
 </body>
 </html>

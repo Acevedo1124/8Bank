@@ -57,5 +57,28 @@ public class Metodos {
 
 	}
  
+	public Boolean Buscar(String Usr) throws SQLException {
+		//Inicia la conexión
+		con.conectar();
+		String sql = "SELECT * FROM tb_rol where nombre='"+ Usr+"';";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = null;
+		resulSet = statement.executeQuery(sql);
+
+		if(resulSet.next()) {
+			con.desconectar();
+			return true;
+		}
+		else {
+			con.desconectar();
+			return false;
+		}
+		
+		
+	
+		//cierra la conexión
+
+	}
 
 }
