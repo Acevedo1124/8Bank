@@ -31,10 +31,11 @@ public class Conexion extends HttpServlet{
     
     public Conexion() {
     	//constructor en el que se trae los datos de conexión y se asignan localmente
+    	
     	this.jdbcURL = getServletContext().getInitParameter("jdbcURL");
     	this.jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
     	this.jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-
+    	System.out.println(jdbcURL);
 	}
     
     public Conexion(String jdbcURL, String jdbcUsername, String jdbcPassword) {

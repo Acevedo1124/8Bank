@@ -23,21 +23,21 @@ import Model.Metodos;
 @WebServlet("/ControlRol")
 public class ControlRol extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Metodos Metodos;
+	Metodos ObjetoPrueba;
 	public void init() {
 		//EN el evento init inicializan los constructores con los datos de la conexión sql que están alamacenados en el archivo web.xml, como variable 
-		
+		String jdbcURL = getServletContext().getInitParameter("jdbcURL");
+		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
+		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 		try {
 			//Constructor de objeto prueba :)
-			Metodos = new Metodos();
+			ObjetoPrueba = new Metodos(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
  
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
+
 	public ControlRol() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -83,11 +83,12 @@ public class ControlRol extends HttpServlet {
 		try {		
 			//se intenta el método Test, de no saltar una excepción significa que la conexión a la base de datos es exitosa
 			// y se pone en el campo intento dentro de la vista
-			RolesTabla =  Metodos.ListRol();
+			RolesTabla =  ObjetoPrueba.ListRol();
 			request.setAttribute("lista", RolesTabla);
 		}
 		catch(Exception e){
 			//caso de una excepción pone un NO
+			System.out.println("ERRROR...");
 		}
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);

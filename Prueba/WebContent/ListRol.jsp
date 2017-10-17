@@ -20,9 +20,9 @@
 		</tr>
 		<c:forEach var="rol" items="${lista}">
 			<tr>
-				<td><c:out value="${articulo.id}"/></td>
-				<td><c:out value="${articulo.nombre}"/></td>
-				<td><c:out value="${articulo.descripcion}"/></td>
+				<td><c:out value="${rol.id}"/></td>
+				<td><c:out value="${rol.nombre}"/></td>
+				<td><c:out value="${rol.descripcion}"/></td>
 			</tr>
 		</c:forEach>
 	</table>

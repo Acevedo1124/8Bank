@@ -20,7 +20,7 @@ public class Metodos {
 	}
  
 	public Metodos() throws SQLException {
-		System.out.println();
+		System.out.println("Inicializando");
 		con = new Conexion();
 	}
 	public void Test() throws SQLException {
@@ -46,7 +46,6 @@ public class Metodos {
 			int id = resulSet.getInt("idtb_Rol");
 			String nombre = resulSet.getString("nombre");
 			String descripcion = resulSet.getString("descripcion");
-
 			Rol articulo = new Rol(id, nombre, descripcion);
 			listaArticulos.add(articulo);
 		}
