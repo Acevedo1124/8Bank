@@ -66,7 +66,7 @@
                                                 <h3 class="p1">Contactenos</h3>
                                                 <form id="contact-form" method="post" enctype="multipart/form-data">                    
                                                     <fieldset>
-                                                          <label><span class="text-form"><h6>Nombre:</h6>>></span><input name="name" type="text" /></label>
+                                                          <label><span class="text-form"><h6>Nombre:</h6></span><input name="name" type="text" /></label>
                                                           <label><span class="text-form"><h6>Telefono:</h6></span><input name="phone" type="text" /></label>
                                                           <label><span class="text-form"><h6>Email:</h6></span><input name="email" type="text" /></label>                              
                                                                                        
