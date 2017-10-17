@@ -58,23 +58,14 @@
                                         <article class="grid_4">
                                             <div class="indent-left">
                                                 <h3>TARJETAS CREDITO</h3>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                
+                                                <figure class="indent-bot"><img src="https://payopm.com/bundles/opmmaster/img/articles/tarjetas_de_credito_offshore.png" alt=""></figure>
+                                        
                                             </div>
                                         </article>
                                         <article class="grid_4">
                                             <div class="indent-left">
                                                 <h3>TARJETAS DEBITO</h3>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
+                                                <figure class="indent-bot"><img src="http://img6.uploadhouse.com/fileuploads/21772/217720966945767b27d61fecfefb19a58b84a41c.jpg" alt=""></figure>
                                                 
                                             </div>
                                             
@@ -82,12 +73,8 @@
                                         <article class="grid_4">
                                             <div class="indent-left">
                                                 <h3>OTROS SERVICIOS</h3>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
-                                                <figure class="indent-bot"><img src="#" alt=""></figure>
+                                                <figure class="indent-bot"><img src="http://www.aymviajes.com/images/Imagen_pagos_en_linea.png" alt=""></figure>
+                                       			<figure class="indent-bot"><img src="https://www.brafton.com/wp-content/uploads/2011/11/shop-icon-e1327966783462.jpg" alt=""></figure>
                                                 
                                             </div>
                                             
