@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Controller.ControlPrueba;
-import Model.Prueba;
+import util.Prueba;
  
 /**
  * Servlet implementation class AdminArticulo
