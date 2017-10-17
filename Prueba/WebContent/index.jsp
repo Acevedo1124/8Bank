@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Prueba</title>
+<script type="text/javascript">
+
+
+</script>
 </head>
 <style>
 	#cabecera{
@@ -21,7 +25,6 @@
 <body>
 <div id="cabecera">
 	<img id="logo" src="/Prueba/Img/rocket-icon.png"/>
-</div>
-<input type="button" style="heigth:2em;" value="${intento}"  />
+</div><input type="button" style="heigth:2em;" value="${intento}" onclick="location.href('ControlPrueba')" />
 </body>
 </html>

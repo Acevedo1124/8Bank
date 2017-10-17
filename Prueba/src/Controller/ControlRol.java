@@ -1,8 +1,9 @@
 package Controller;
 
+
 import java.io.IOException;
 import java.sql.SQLException;
-
+import Model.Rol;
  
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,27 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
+import java.util.List;
 
 
-
-import Controller.ControlPrueba;
 import Model.Metodos;
  
 /**
  * Servlet implementation class AdminArticulo
  */
-@WebServlet("/ControlPrueba")
-public class ControlPrueba extends HttpServlet {
+@WebServlet("/ControlRol")
+public class ControlRol extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Metodos ObjetoPrueba;
+	Metodos Metodos;
 	public void init() {
 		//EN el evento init inicializan los constructores con los datos de la conexión sql que están alamacenados en el archivo web.xml, como variable 
-		String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
+		
 		try {
 			//Constructor de objeto prueba :)
-			ObjetoPrueba = new Metodos(jdbcURL, jdbcUsername, jdbcPassword);
+			Metodos = new Metodos();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -40,7 +38,7 @@ public class ControlPrueba extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ControlPrueba() {
+	public ControlRol() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -57,7 +55,7 @@ public class ControlPrueba extends HttpServlet {
 		
 		try {
 				//Llamado a la función index
-				index(request, response);
+				ListRol(request, response);
 
 			
 		} catch (SQLException e) {
@@ -78,20 +76,20 @@ public class ControlPrueba extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+	private void ListRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ListRol.jsp");
+		List<Rol> RolesTabla;
 		try {		
 			//se intenta el método Test, de no saltar una excepción significa que la conexión a la base de datos es exitosa
 			// y se pone en el campo intento dentro de la vista
-			ObjetoPrueba.Test();
-			request.setAttribute("intento", "SI");
+			RolesTabla =  Metodos.ListRol();
+			request.setAttribute("lista", RolesTabla);
 		}
-		catch(SQLException e){
+		catch(Exception e){
 			//caso de una excepción pone un NO
-			request.setAttribute("intento", "NO");
 		}
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);
 	}
-}	
+}

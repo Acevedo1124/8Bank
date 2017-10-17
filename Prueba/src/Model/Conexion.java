@@ -2,11 +2,23 @@ package Model;
  
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
  //Librería de conexión SQL
- 
-public class Conexion {
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Conexion extends HttpServlet{
 	
+
 	private Connection jdbcConnection;
 	//Objeto de conexión SQL, aquí se puede tener información del estado de las conexiones SQL en el sistema
     private String jdbcURL;
@@ -17,6 +29,13 @@ public class Conexion {
     //String en el que se especifica la contraseña del usuario en la base de datos
     
     
+    public Conexion() {
+    	//constructor en el que se trae los datos de conexión y se asignan localmente
+    	this.jdbcURL = getServletContext().getInitParameter("jdbcURL");
+    	this.jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
+    	this.jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
+
+	}
     
     public Conexion(String jdbcURL, String jdbcUsername, String jdbcPassword) {
     	//constructor en el que se trae los datos de conexión y se asignan localmente
