@@ -29,7 +29,7 @@
 			</div>
 			<div class="col-md-6">
 				<br>
-				<form class="form-inline" id="login" onsubmit="return pasarvariable();" >
+				<div class="form-inline" >
 					<div class="form-group">
 						<label for="nombre" class="sr-only">Usuario:</label>
 						<input type="text" id="Usuario" placeholder="Usuario:"  class="form-control" required>
@@ -40,8 +40,9 @@
 						<input type="password" id="password" placeholder="Contraseña:" class="form-control" required>
 					</div>
 					
-					<button id="login" class="btn btn-success " >Login</button>	
+					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
 					<i class="fa fa-refresh fa-spin"></i>
+					</div>
 									
 			</div>
 		</div>
