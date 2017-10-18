@@ -245,10 +245,19 @@ public class ControlRol extends HttpServlet {
 		}
 	}
 	private void GuardarCambiosRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		String id = java.net.URLDecoder.decode(request.getParameter("id"), "UTF-8");
-		String nombre = java.net.URLDecoder.decode(request.getParameter("txtNombre"), "UTF-8");
-		String descripcion = java.net.URLDecoder.decode(request.getParameter("txtDescripcion"), "UTF-8");
-	
-	}
+		try {
+			int id = Integer.parseInt(java.net.URLDecoder.decode(request.getParameter("id"), "UTF-8"));
+			String nombre = java.net.URLDecoder.decode(request.getParameter("txtNombre"), "UTF-8");
+			String descripcion = java.net.URLDecoder.decode(request.getParameter("txtDescripcion"), "UTF-8");
+			Rol r = new Rol(id,nombre,descripcion);
+			Objeto_ModeloRol.modificarRol(r);
+			 // asignamos en el objeto el metodomodificarRol
+		} 
+		catch (Exception e) {
+			System.out.println("ERRROR al modificar...");
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ControlRol?action=Listar");
+		dispatcher.forward(request, response);
+		}
 	
 }
