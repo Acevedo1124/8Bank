@@ -19,6 +19,21 @@ public class Usuario {
 		this.Contraseña = "";
 	}
 	
+	public Usuario(int Identificacion,int Estado,int Borrado,int idCiudades,String Nombre,
+				String Primer_apellido,String Segundo_apellido,String Mail,String Telefono,String Usuario,String Contraseña) {
+		this.Identificacion = Identificacion;
+		this.Estado = Estado;
+		this.Borrado = Borrado;
+		this.idCiudades = idCiudades;
+		this.Nombre = Nombre;
+		this.Primer_apellido = Primer_apellido;
+		this.Segundo_apellido = Segundo_apellido;
+		this.Mail = Mail;
+		this.Telefono = Telefono;
+		this.Usuario = Usuario;
+		this.Contraseña = Contraseña;
+	}
+	
 	public int getIdentificacion() {
 		return Identificacion;
 	}
