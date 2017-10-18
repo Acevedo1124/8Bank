@@ -33,7 +33,8 @@ function crud_ciudad(){
 }
 
 function crud_rol(){
-	ocultar();
-	document.getElementById("Ver_rol").style.display = "block";
+	url = "../ControlRol";
+	location.href = url;
+
 	
 }
