@@ -200,6 +200,8 @@ public class ControlRol extends HttpServlet {
 				request.setAttribute("Respuesta", "No Existe");
 		}
 		catch(Exception e){
+			//caso de una excepción pone un NO
+			System.out.println("ERRROR al buscar..."+e);
 			//caso de una excepción pone el nombre del método
 			System.out.println("ERRROR al buscar...");
 		}
