@@ -24,14 +24,11 @@ public class ModeloRol {
 		System.out.println(jdbcURL);
 		con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
 	}
- 
 	public ModeloRol() throws SQLException {
 		System.out.println("Inicializando");
 		//Constructor en caso de que no se ingresen los datos de la conexión
 		con = new Conexion();
 	}
-	
-	
 	//Método en el cual se listan todos los roles en la base de datos
 	public List<Rol>  ListRol() throws SQLException {
 		//Inicia la conexión
@@ -61,12 +58,8 @@ public class ModeloRol {
 		con.desconectar();
 		//finalmente se desconecta y se retorna la lista
 		return listaRoles;
-		
-	
 		//cierra la conexión
-
 	}
- 
 	//Filtrar es un método muy similar a listar, sólo cambia la consulta sql
 	public List<Rol>  FiltrarRol(String ID,String Nombre,int Op) throws SQLException {
 		//Inicia la conexión
@@ -102,15 +95,10 @@ public class ModeloRol {
 		//se desconecta y se retorna la lista creada
 		con.desconectar();
 		return listaRoles;
-		
 	
 		//cierra la conexión
 
 	}
-	
-	
-	
-	
 	//en buscar es una comprovaciòn y función de prueba para el login
 	//lo que se hace es buscar un campo en la base de datos, si existe se retorna true, caso contrario false
 	public Boolean Buscar(String Usr) throws SQLException {
@@ -132,9 +120,6 @@ public class ModeloRol {
 			con.desconectar();
 			return false;
 		}
-		
-		
-	
 		//cierra la conexión dontro del if y el else ya que dentro de estos se retorna
 
 	}
@@ -142,8 +127,6 @@ public class ModeloRol {
 	//En guardar rol se obtiene un objeto tipo Rol y se almacena en la base de datos
 	
 	public void guardarRol(Rol RolNuevo){
-
-		
 		//Se obtiene solo el nombre y la descripción de dicho objeto
 		String nombre = RolNuevo.getNombre();
 		String descripcion = RolNuevo.getDescripcion();
@@ -163,5 +146,24 @@ public class ModeloRol {
 	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	  }
-
+	//metodo modificarRol
+	public void modificarRol(Rol rolModificar) { //llamo a la clase Rol y le asigno un objeto dentro del método
+		
+		int id = rolModificar.getId();
+		String nombre = rolModificar.getNombre(); //asigno en una variable, lo que tiene el objeto
+		String descripcion = rolModificar.getDescripcion();
+		rolModificar.setNombre(nombre);
+		rolModificar.setDescripcion(descripcion);
+		rolModificar.setId(id);
+		Statement st;
+		try {
+			con.conectar(); //se llama al metodo conectar, y se obtiene la conexion
+			connection = con.getJdbcConnection(); //asignamos al objeto lo que tiene la conexion
+			st = connection.createStatement();// almacenamos en el objeto st la conexion
+			st.execute("update tb_rol set nombre='"+rolModificar.getNombre()+"', descripcion = '"+rolModificar.getDescripcion()+"' WHERE idtb_Rol="+rolModificar.getId()+";");
+			//asigamos en el objeto la ejecucion de la conexion
+		} catch (Exception e) {
+			Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
 }
