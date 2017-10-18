@@ -40,7 +40,7 @@
 						<input type="password" id="password" placeholder="Contraseña:" class="form-control" required>
 					</div>
 					
-					<button id="login" class="btn btn-success " onclick="pasarvariable()">Login</button>	
+					<button id="login" class="btn btn-success " >Login</button>	
 					<i class="fa fa-refresh fa-spin"></i>
 									
 			</div>
