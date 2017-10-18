@@ -50,11 +50,13 @@ public class Conexion extends HttpServlet{
         if (jdbcConnection == null || jdbcConnection.isClosed()) {
             try {
             	//Inicializa el driver e inicializa la conexión
+            	System.out.println("Conectado");
                 Class.forName("com.mysql.jdbc.Driver");
                 jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
            
             } catch (ClassNotFoundException e) {
             	//Muestra la exepción ante cualquier error 
+            	System.out.println("Error");
                 throw new SQLException(e);
             }
             
