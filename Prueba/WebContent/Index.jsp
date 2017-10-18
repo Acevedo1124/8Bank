@@ -46,24 +46,10 @@
 			</div>
 		</div>
 		
-	</header>
-
-		
+	</header>	
 	
 	
-	<br><br>	
-	<marquee scrollamount="10" scrolldelay="100" >
-		<div id="img">
-			 
-		</div>
-	</marquee>
-
-	<div class="row">
-		<div id="respuesta" class="container">
-		<span></span>
-			
-		</div>
-	</div>
+	
 
 	<!-- Incluyen los archivos js	 -->
 	<script src="//code.jquery.com/jquery-latest.js"></script> 
