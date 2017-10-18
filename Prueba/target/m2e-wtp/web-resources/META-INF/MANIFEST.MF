@@ -1,5 +1,17 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: administrador
+=======
+<<<<<<< HEAD
+Built-By: m.acevedo.meneses
+=======
+<<<<<<< HEAD
+Built-By: santiago.agudelo
+=======
+Built-By: cristian.c.meneses
+>>>>>>> b9dd54d706f670a94af951812aa844084536bf9a
+>>>>>>> 960dc2fbf1e660e29d9ec236fe99b2c626bd2858
+>>>>>>> 90c31414f73f9250d0d369b4ede3ec3ec8f6e1f6
 Build-Jdk: 1.8.0_144
 Created-By: Maven Integration for Eclipse
 

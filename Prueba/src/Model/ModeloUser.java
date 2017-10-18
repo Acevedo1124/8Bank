@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 public class ModeloUser {
 	private Conexion con;
 	private Connection connection;
- //Constructor que recibe los datos de la conexión SQL e inicializa el objeto de conexión con dichos dparámetros
+ //Constructor que recibe los datos de la conexión SQL e inicializa el objeto de conexión con dichos parámetros
 	public ModeloUser(String jdbcURL, String jdbcUsername, String jdbcPassword) throws SQLException {
 		System.out.println(jdbcURL);
 		con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
@@ -30,7 +30,7 @@ public class ModeloUser {
 	
 	
 	//Método en el cual se listan todos los roles en la base de datos
-	public List<Usuario>  ListRol() throws SQLException {
+	public List<Usuario>  ListUsuario() throws SQLException {
 		//Inicia la conexión
 		con.conectar();
 		//se crea la lista, en la cual se almacenarán los resultados de la consulta
