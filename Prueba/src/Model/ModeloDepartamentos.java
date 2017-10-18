@@ -105,7 +105,7 @@ public class ModeloDepartamentos extends Conexion{
 		    	con.conectar();
 				jdbcConnection = con.getJdbcConnection();
 		    	st = jdbcConnection.createStatement();
-		    st.execute("INSERT INTO tb_departamentos ( nombre, estado) VALUES ('"+ nombre +"','1');");
+		    st.execute("INSERT INTO tb_departamentos ( nombre, estado) VALUES ('"+ nombre +"',1);");
 		    System.out.println("INSERT INTO tb_Departamentos ( nombre, estado) VALUES ('\"+ nombre +\"','1');");
 		    st.close();
 	        con.desconectar();
