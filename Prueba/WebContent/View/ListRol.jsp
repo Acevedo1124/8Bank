@@ -34,7 +34,7 @@ function FiltrarRol(){
 <div></div>
 	<h1>Lista Rol</h1>
 	<h3>${resultado}</h3>
-	<input type="button" style="heigth:2em;" value="Agregar registro" onclick="location.href='AddRol.jsp'"/>
+	<input type="button" style="heigth:2em;" value="Agregar registro" onclick="location.href='View/AddRol.jsp'"/>
 	<br/><br/>
 	<input type="text" id="FilterID" placeholder="filtrar por id " onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
 	<input type="text" id="FilterNombre" placeholder="filtrar por nombre" onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
@@ -44,16 +44,15 @@ function FiltrarRol(){
 		 <td><strong>ID</strong></td>
 		 <td><strong>NOMBRE</strong></td>
 		 <td><strong>DESCRPICION</strong></td>
-		 <td colspan="2"><strong>ACCIONES</strong></td>
+		 <td ><strong>ACCIONES</strong></td>
 		</tr>
 		<c:forEach var="rol" items="${lista}">
 			<tr>
 				<td><c:out value="${rol.id}"/></td>
 				<td><c:out value="${rol.nombre}"/></td>
 				<td><c:out value="${rol.descripcion}"/></td>
-				<td><a href="#">Editar </a> </td>
-				
-				<td><a href="#">Borrar</a> </td>
+				<td><a href="ControlRol?action=Modificar&id=${rol.id}">Editar </a> </td>
+
 			</tr>
 		</c:forEach>
 	</table>

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>8 Back</title>
+	<title>BIENVENIDO A GRUPO 8BANK</title>
 	<!-- Incluyen los archivos de css -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -18,13 +18,13 @@
 	<header  > <!-- Encabezado -->
 		<div class="container">
 			<div class="col-md-2">
-			img
-				<img src="img/logo.jpg"  width="130" alt="" class="img-responsive  img-circle">				
+			<a href="Index.jsp" src="img/logo.png">home</a>
+				<img src="img/logo.png"  width="130" alt="" class="img-responsive  img-circle">				
 			</div>
 			<div class="col-md-4">
 				<h1>
 
-				<div class="row">texto  otro</div>
+				<div class="row">GRUPO 8BANK</div>
 				</h1>
 			</div>
 			<div class="col-md-6">
