@@ -147,7 +147,9 @@ public class ModeloRol {
 	    }
 	  }
 	//metodo modificarRol
-	public void modificarRol(Rol rolModificar) { //llamo a la clase Rol y le asigno un objeto dentro del método
+	
+	
+public void modificarRol(Rol rolModificar) { //llamo a la clase Rol y le asigno un objeto dentro del método
 		
 		int id = rolModificar.getId();
 		String nombre = rolModificar.getNombre(); //asigno en una variable, lo que tiene el objeto
