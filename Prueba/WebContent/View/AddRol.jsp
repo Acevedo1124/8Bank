@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 function GuardarRol(){
-	var url = "/Prueba/ControlRol?txtNombre=" + encodeURIComponent(document.getElementById("txtNombre").value)
+	var url = "../ControlRol?txtNombre=" + encodeURIComponent(document.getElementById("txtNombre").value)
 			+ "&txtDescripcion=" +encodeURIComponent(document.getElementById("txtDescripcion").value)
 			+ "&action=Guardar";
 	location.href = url;
