@@ -46,7 +46,7 @@ pageEncoding="ISO-8859-1"%>
 			<h2>	
 				<div class="col-md-9" style="display:none" id="Ver_user"><h1>Ver user</h1></div>
 				<div class="col-md-9" style="display:none" id="Ver_ciudad"><h1>Ver Ver_ciudad</h1></div>
-				<div class="col-md-9" style="display:none" id="Ver_rol"><h1>Ver rol</h1></div>
+				
 			</h2>
 		</div>
 	</div>
@@ -58,7 +58,7 @@ pageEncoding="ISO-8859-1"%>
 			
 			document.getElementById("Ver_user").style.display = "none";
 			document.getElementById("Ver_ciudad").style.display = "none";
-			document.getElementById("Ver_rol").style.display = "none";
+
 
 
 		}
@@ -78,21 +78,10 @@ pageEncoding="ISO-8859-1"%>
 
 		}
 
-		function crud_rol(){
-			ocultar();
-			document.getElementById("Ver_rol").style.display = "block";
 
-		}
 
 	</script>
 
-	
-	
-	
-	
-	
-
-	
 
 	<!-- Incluyen los archivos js	 -->
 	<script src="//code.jquery.com/jquery-latest.js"></script> 
