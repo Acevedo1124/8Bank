@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+
+import DB.Conexion;
+
 import java.sql.Statement;
 import java.sql.ResultSet;
 /*

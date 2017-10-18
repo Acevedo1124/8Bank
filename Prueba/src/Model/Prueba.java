@@ -2,6 +2,8 @@ package Model;
 
 
 import java.sql.SQLException;
+
+import DB.Conexion;
  
 /*
  * @autor: Elivar Largo

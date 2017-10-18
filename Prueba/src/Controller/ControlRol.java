@@ -113,7 +113,7 @@ public class ControlRol extends HttpServlet {
 		}
 		catch(Exception e){
 			//caso de una excepción pone un NO
-			System.out.println("ERRROR al buscar...");
+			System.out.println("ERRROR al buscar..."+e);
 		}
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);
