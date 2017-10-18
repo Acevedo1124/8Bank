@@ -59,15 +59,33 @@ public class ControlRol extends HttpServlet {
 			
 			if (accion !="" && accion!= null) {
 				//SI la acción es listar se llama el método ListRol
-				if (accion.equals("Listar"))
-					ListRol(request, response);
-				//SI la acción es Guardar se llama el método GuardarRol
-				if (accion.equals("Guardar"))
-					GuardarRol(request,response);
-				if (accion.equals("Filtrar"))
-					//SI la acción es filtrar se llama el método FiltrarRol
-					FiltrarRol(request,response);
+				switch(accion) {
+					case "Listar":
+						ListRol(request, response);
+					//SI la acción es Guardar se llama el método GuardarRol
+						break;
+					case "Guardar":
+						GuardarRol(request,response);
+						break;
+					case "Filtrar":
+						//SI la acción es filtrar se llama el método FiltrarRol
+						FiltrarRol(request,response);
+						break;
+					case "Modificar":
+						//SI la acción es filtrar se llama el método FiltrarRol
+						ModificarRol(request,response);
+						break;
+					case "GuardarCambios":
+						//SI la acción es filtrar se llama el método FiltrarRol
+						GuardarCambiosRol(request,response);
+						break;
+					default:
+						ListRol(request, response);
+						break;
+				}
 			}
+			else
+				ListRol(request, response);
 			if (Usr!="" && Usr!= null)
 				//Y si la variable Usr no está vacía la acción se llama el método Buscar
 				Buscar(request, response);
@@ -123,8 +141,8 @@ public class ControlRol extends HttpServlet {
 		//se pide la página a la cual se despacha al usar este método
 		RequestDispatcher dispatcher;
 		//Al guardar se le pide al usuario el nombre y la descripción, las cuales están como parámetro.
-		String nombre = request.getParameter("txtNombre");
-		String descripcion = request.getParameter("txtDescripcion");
+		String nombre = java.net.URLDecoder.decode(request.getParameter("txtNombre"), "UTF-8");
+		String descripcion = java.net.URLDecoder.decode(request.getParameter("txtDescripcion"), "UTF-8");
 		//se crea un objeto rol con el nombre y la descripción,
 		//se pone 0 en el ID porque el valor del ID no importa ya que 
 		//al llamar el procedimiento de guardado este no tiene en cuenta el ID del objeto Rol
@@ -188,6 +206,7 @@ public class ControlRol extends HttpServlet {
 	private void Buscar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/index.jsp");
+		
 		//se crea un booleano de verificación, el cual recibirá el resultado de que exista o no el nombre a buscar en la base de datos.
 		Boolean Verificacion;
 		try {		
@@ -208,4 +227,28 @@ public class ControlRol extends HttpServlet {
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);
 	}
+
+
+	private void ModificarRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		String Id = request.getParameter("id");
+		try {
+		List <Rol> RolesTabla =  Objeto_ModeloRol.FiltrarRol(Id,"",1);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ModifyRol.jsp");
+		request.setAttribute("Id", Id);
+		request.setAttribute("Nombre", RolesTabla.get(0).getNombre());
+		request.setAttribute("Descripcion", RolesTabla.get(0).getDescripcion());
+		dispatcher.forward(request, response);
+		}
+		catch(Exception e) {
+			
+			System.out.println("ERRROR al buscar...");
+		}
+	}
+	private void GuardarCambiosRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		String id = java.net.URLDecoder.decode(request.getParameter("id"), "UTF-8");
+		String nombre = java.net.URLDecoder.decode(request.getParameter("txtNombre"), "UTF-8");
+		String descripcion = java.net.URLDecoder.decode(request.getParameter("txtDescripcion"), "UTF-8");
+	
+	}
+	
 }
