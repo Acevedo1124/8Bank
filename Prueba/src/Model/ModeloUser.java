@@ -181,12 +181,11 @@ public class ModeloUser {
 	
 	//En guardar rol se obtiene un objeto tipo Rol y se almacena en la base de datos
 	
-	public void guardarUser(User UserNuevo){
+	public void guardarUser(Usuario UserNuevo){
 
 		
 		//Se obtiene solo el nombre y la descripción de dicho objeto
-		String nombre = UserNuevo.getNombre();
-		String descripcion = UserNuevo.getDescripcion();
+		
 		Statement st;
 	    try {
 	    	//se conecta y se obtiene la conexión.
@@ -195,7 +194,10 @@ public class ModeloUser {
 	    	st = connection.createStatement();
 	    	//se prepara el string de la consulta, solo se agrega nombre y descripción
 	    	// ya que el ID es un valor auto-incremento y no es necesario especificarlo
-	    st.execute("INSERT INTO tb_rol ( nombre, descripcion) VALUES ('"+ nombre +"','" + descripcion +"');");
+	    	
+	    	String sql= "INSERT INTO `tb_usuario` (`Identificacion`, `Nombre`, `Primer_apellido`, `Segundo_apellido`, `Mail`, `Telefono`, `Usuario`, `Contraseña`, `Estado`, `Borrado`, `tb_Ciuadades_idtb_Ciuadades`) VALUES\r\n" + 
+	    			"("+UserNuevo.getIdentificacion()+",'"+UserNuevo.getNombre()+"','"+UserNuevo.getPrimer_apellido()+"','"+UserNuevo.getSegundo_apellido()+"','"+UserNuevo.getMail()+"','"+UserNuevo.getTelefono()+"','"+UserNuevo.getUsuario()+"','"+UserNuevo.getContraseña()+"',"+UserNuevo.getEstado()+","+UserNuevo.getBorrado()+",'"+UserNuevo.getIdCiudades()+");";
+	    st.execute(sql); 
 	    st.close();
 	    //se ejecuta y se  cierra tanto el statement como la conexiòn
         con.desconectar();
