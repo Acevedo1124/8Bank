@@ -57,6 +57,7 @@ function FiltrarRol(){
 			</tr>
 		</c:forEach>
 	</table>
-	
+	<br><br>
+	<input type="button" style="heigth:2em;" value="Volver" onclick="location.href='View/index.jsp'"/>
 </body>
 </html>

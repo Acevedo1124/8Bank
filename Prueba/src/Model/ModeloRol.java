@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Entity.Rol;
+import util.Conexion;
 
 import java.sql.Statement;
 import java.sql.ResultSet;

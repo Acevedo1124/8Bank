@@ -40,5 +40,7 @@ function Login(){
 	<input type="button" style="heigth:2em;" value="${Respuesta}"  />
 	
 </div>
+<input type="button" style="heigth:2em;" value="Crud Rol"  onclick="location.href = 'ControlRol?action=Listar'" />
 </body>
+
 </html>

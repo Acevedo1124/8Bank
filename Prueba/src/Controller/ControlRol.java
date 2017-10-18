@@ -3,15 +3,16 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import Model.Rol;
- 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
+
+import Entity.Rol;
+
 import java.util.List;
 
 
@@ -92,7 +93,7 @@ public class ControlRol extends HttpServlet {
 	
 	private void ListRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ListRol.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ListRol.jsp");
 		//Se crea una lista de roles, ya que al listar en la base de datos
 		//se necesita una variable que almacene la lista que se desea imprimir en la vista
 		List<Rol> RolesTabla;
@@ -139,7 +140,7 @@ public class ControlRol extends HttpServlet {
 			//caso de una excepción se queda en la misma página, 
 			//y se indica que hubo un error al guardar
 			
-			dispatcher = request.getRequestDispatcher("AddRol.jsp");
+			dispatcher = request.getRequestDispatcher("View/AddRol.jsp");
 			request.setAttribute("resultado", "Error al guardar el rol " + nombre);
 			System.out.println("ERRROR al guardar...");
 		}
@@ -149,7 +150,7 @@ public class ControlRol extends HttpServlet {
 	
 	private void FiltrarRol(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ListRol.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ListRol.jsp");
 		//se crea una lista de roles ya que el filtrado podr
 		List<Rol> RolesTabla;
 		//Los paràmetros a recibir en esta ocación es el ID y el Nombre que el usuario ingresó.
@@ -186,7 +187,7 @@ public class ControlRol extends HttpServlet {
 	
 	private void Buscar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/index.jsp");
 		//se crea un booleano de verificación, el cual recibirá el resultado de que exista o no el nombre a buscar en la base de datos.
 		Boolean Verificacion;
 		try {		
