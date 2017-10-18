@@ -43,7 +43,7 @@
 					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
 					<i class="fa fa-refresh fa-spin"></i>
 					</div>
-									
+					<h2 id="respuesta"></h2>				
 			</div>
 		</div>
 		
