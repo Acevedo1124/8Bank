@@ -18,13 +18,12 @@ pageEncoding="ISO-8859-1"%>
 	<header  > <!-- Encabezado -->
 		<div class="container">
 			<div class="col-md-2">
-				img
-				<img src="img/logo.jpg"  width="130" alt="" class="img-responsive  img-circle">				
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >			
 			</div>
 			<div class="col-md-4">
 				<h1>
 
-					<div class="row">Bienvenido ${nombre}</div>
+					<div class="row">Bienvenido </div>
 				</h1>
 			</div>
 			
@@ -35,10 +34,10 @@ pageEncoding="ISO-8859-1"%>
 	<div class="conatiner">
 		
 		
-		<div class="col-md-3">
-			<button id="btn_user" class="btn btn-success " onclick="crud_user()" >Usuarios</button><br>
-			<button id="btn_cuidad" class="btn btn-success " onclick="crud_ciudad()" >Ciudad</button><br>
-			<button id="btn_rol" class="btn btn-success " onclick="crud_rol()" >Roles</button><br>
+		<div class="col-md-3"><br><br><br>
+			<button id="btn_user" class="btn btn-success " onclick="crud_user()" >Usuarios</button><br><br><br>
+			<button id="btn_cuidad" class="btn btn-success " onclick="crud_ciudad()" >Ciudad</button><br><br><br>
+			<button id="btn_rol" class="btn btn-success " onclick="crud_rol()" >Roles</button><br><br><br>
 
 
 		</div>
