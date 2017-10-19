@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 import Entity.Ciudades;
+import Entity.Departamentos;
 import util.Conexion;
 
 public class ModeloCiudades {
@@ -26,8 +27,7 @@ public class ModeloCiudades {
 		con = new Conexion();
 	}
 	
-	public void guardar_ciudad(Ciudades ciudad){		
-		int id = ciudad.getId_ciudad();
+	public void guardar_ciudad(Ciudades ciudad){
 		String nombre = ciudad.getNombre();
 		int departamento = ciudad.getId_departamento();
 		Statement st;
@@ -35,7 +35,7 @@ public class ModeloCiudades {
 	    	con.conectar();
 	    	connection = con.getJdbcConnection();
 	    	st = connection.createStatement();
-	    st.execute("insert into tb_ciudades (idtb_Ciudades, nombre, tb_Departamentos_idtb_Departamentos,Estado) values ('"+id+"','"+nombre+"','"+departamento+"',1);");
+	    st.execute("insert into tb_ciudades (nombre, tb_Departamentos_idtb_Departamentos,Estado) values ('"+nombre+"','"+departamento+"',1);");
 	    st.close();
         con.desconectar();
 	    } catch (SQLException ex) {
@@ -151,6 +151,24 @@ public class ModeloCiudades {
 		}
        con.desconectar();
        return listaCiudades;
+	}
+	
+	public List<Departamentos>  Listar_departamentos(String Id, String Nombre) throws SQLException {
+		con.conectar(); 
+		List<Departamentos> listarDepartamentos= new ArrayList<Departamentos>();
+		String sql = "SELECT * FROM tb_departamentos;";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = statement.executeQuery(sql);
+		while (resulSet.next()) {
+			int id = resulSet.getInt("idtb_Departamentos");
+			String nombre = resulSet.getString("nombre");
+			Boolean estado = resulSet.getBoolean("estado");
+			Departamentos departamentos = new Departamentos(id, nombre,estado);
+			listarDepartamentos.add(departamentos);
+		}
+       con.desconectar();
+       return listarDepartamentos;
 	}
 
 }
