@@ -1,27 +1,21 @@
 package Entity;
 
 public class Departamentos {
-	private int idDpto;
+	 
+	 private int idDpto;
 	 private String nombreDpto;
 	 private Boolean estadoDpto;
 	 
-	
-	
-		// TODO Auto-generated constructor stub
-	public Departamentos(int idDpto, String nombreDpto, Boolean estadoDpto) {
-		
+	 public Departamentos(int idDpto, String nombreDpto, Boolean estadoDpto) {
+		 
 		this.idDpto = idDpto;
 		this.nombreDpto = nombreDpto;
 		this.estadoDpto = estadoDpto;
 	}
-	
-	
-	
+	 
 	public Departamentos() {
-			
-		}
-
-
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getIdDpto() {
 		return idDpto;

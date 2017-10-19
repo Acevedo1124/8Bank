@@ -2,14 +2,12 @@ package Entity;
 
 public class Rol {
 
-
-
 	private int id;
 	private String nombre;
 	private String descripcion;
 
 	
-	public Rol(int id, String nombre, String descripcion) {
+	public Rol(int id, String nombre, String descripcion) { //metodo constructor de la clase Rol
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;

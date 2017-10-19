@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Entity.Departamentos;
-import Entity.Rol;
 import Model.ModeloDepartamentos;
-import Model.ModeloRol;
 
 
 @WebServlet("/ControlDepartamentos")
@@ -74,9 +72,6 @@ public class ControlDepartamentos extends HttpServlet {
 							break;
 					}
 				}
-<<<<<<< HEAD
-	               
-=======
 				else
 					ListDepartamentos(request, response);
 	                
@@ -87,7 +82,7 @@ public class ControlDepartamentos extends HttpServlet {
 				//Se obtiene cualquier excepción SQL que ocurra en el proceso
 				e.getStackTrace();
 			}
->>>>>>> a94fe9efea0890241151e434cdc03a52215c4927
+
 		}
 
 		
