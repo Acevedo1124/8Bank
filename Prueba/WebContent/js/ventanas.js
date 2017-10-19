@@ -17,7 +17,9 @@ function ocultar() {
 	
 	}
 
-
+function listaruser(){
+	
+}
 function crud_user(){
 	ocultar();
 	document.getElementById("Ver_user").style.display = "block";

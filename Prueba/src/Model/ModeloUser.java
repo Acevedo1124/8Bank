@@ -36,7 +36,7 @@ public class ModeloUser {
 		//se crea la lista, en la cual se almacenarán los resultados de la consulta
 		List<Usuario> listaUser= new ArrayList<Usuario>();
 		//Se crea el string de la consulta
-		String sql = "SELECT * FROM tb_rol";
+		String sql = "SELECT * FROM tb_usuario";
 		//se obtiene la conexión y se ejecuta el query
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
@@ -49,7 +49,7 @@ public class ModeloUser {
 			int Identificacion = resulSet.getInt("Identificacion");
 			int Estado = resulSet.getInt("Estado");
 			int Borrado= resulSet.getInt("Borrado");
-			int idCiudades= resulSet.getInt("tb_Ciudades_idtb_Ciudades");
+			int idCiudades= resulSet.getInt("tb_Ciuadades_idtb_Ciuadades");
 			
 			String Nombre = resulSet.getString("Nombre");
 			String Primer_apellido = resulSet.getString("Primer_apellido");
