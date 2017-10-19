@@ -1,5 +1,156 @@
 package Model;
 
+import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Statement;
+import java.sql.ResultSet;
+
+import Entity.Ciudades;
+import util.Conexion;
+
 public class ModeloCiudades {
+	private Conexion con;
+	private Connection connection;
+	
+	public ModeloCiudades(String jdbcURL, String jdbcUsername, String jdbcPassword) throws SQLException {
+		System.out.println(jdbcURL);
+		con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
+	}
+	
+	public ModeloCiudades() throws SQLException {
+		System.out.println("Inicializando");
+		con = new Conexion();
+	}
+	
+	public void guardar_ciudad(Ciudades ciudad){		
+		int id = ciudad.getId_ciudad();
+		String nombre = ciudad.getNombre();
+		int departamento = ciudad.getId_departamento();
+		Statement st;
+	    try {
+	    	con.conectar();
+	    	connection = con.getJdbcConnection();
+	    	st = connection.createStatement();
+	    st.execute("insert into tb_ciudades (idtb_Ciudades, nombre, tb_Departamentos_idtb_Departamentos) values ('"+id+"','"+nombre+"','"+departamento+"');");
+	    st.close();
+        con.desconectar();
+	    } catch (SQLException ex) {
+	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	  }
+	
+	public void modificar_ciudad(Ciudades ciudad){		
+		int id = ciudad.getId_ciudad();
+		String nombre = ciudad.getNombre();
+		int departamento = ciudad.getId_departamento();
+		Statement st;
+	    try {
+	    	con.conectar();
+	    	connection = con.getJdbcConnection();
+	    	st = connection.createStatement();
+	    st.execute("update tb_ciudades set nombre = '"+nombre+"', tb_Departamentos_idtb_Departamentos = '"+departamento+"' where idtb_Ciudades = '"+id+"';");
+	    st.close();
+        con.desconectar();
+	    } catch (SQLException ex) {
+	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	  }
+	
+	public List<Ciudades>  modificarXid(String Id) throws SQLException {
+		con.conectar(); 
+		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
+		String sql = "SELECT * FROM tb_ciudades WHERE idtb_Ciudades = '"+ Id +"';";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = statement.executeQuery(sql);
+		while (resulSet.next()) {
+			int id =resulSet.getInt("idtb_Ciudades");
+			String nombre = resulSet.getString("nombre");
+			int departamento =resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			Ciudades ciudad = new Ciudades(id, nombre, departamento);
+			listaCiudades.add(ciudad);
+		}
+       con.desconectar();
+       return listaCiudades;
+	}
+	
+	public void eliminar_ciudad(Ciudades ciudad){		
+		int id = ciudad.getId_ciudad();
+		Statement st;
+	    try {
+	    	con.conectar();
+	    	connection = con.getJdbcConnection();
+	    	st = connection.createStatement();
+	    st.execute("delete from tb_ciudades where idtb_Ciudades = '"+id+"';");
+	    st.close();
+        con.desconectar();
+	    } catch (SQLException ex) {
+	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	  }
+	
+	public List<Ciudades>  listar_ciudades() throws SQLException {
+		con.conectar();
+		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
+		String sql = "SELECT * FROM tb_ciudades";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = statement.executeQuery(sql);
+		while (resulSet.next()) {
+			int id = resulSet.getInt("idtb_Ciudades");
+			String nombre = resulSet.getString("nombre");
+			int departamento = resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			Ciudades ciudad = new Ciudades(id, nombre, departamento);
+			listaCiudades.add(ciudad);
+		}
+		con.desconectar();
+		return listaCiudades;
+	}
+	
+	public Boolean buscar_ciudades(String ciu) throws SQLException {
+		con.conectar();
+		String sql = "SELECT * FROM tb_ciudades where nombre = '"+ ciu +"';";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = null;
+		resulSet = statement.executeQuery(sql);
+		
+		if(resulSet.next()) {
+			con.desconectar();
+			return true;
+		}
+		else {
+			con.desconectar();
+			return false;
+		}
+	}
+	
+	public List<Ciudades>  FiltrarCiudades(String Nombre,String Departamento, int Op) throws SQLException {
+		con.conectar(); 
+		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
+		String sql = "SELECT * FROM tb_ciudades;";
+		if (Op==1)
+			sql = "SELECT * FROM tb_ciudades where nombre = '"+ Nombre +"';";
+		if (Op == 2)
+		    sql = "SELECT * FROM tb_ciudades WHERE tb_Departamentos_idtb_Departamentos = '"+ Departamento +"';";
+		if (Op == 3)
+			sql = "SELECT * FROM tb_ciudades WHERE nombre = '"+ Nombre +"' and tb_Departamentos_idtb_Departamentos = '"+ Departamento +"';";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = statement.executeQuery(sql);
+		while (resulSet.next()) {
+			int id =resulSet.getInt("idtb_Ciudades");
+			String nombre = resulSet.getString("nombre");
+			int departamento =resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			Ciudades ciudad = new Ciudades(id, nombre, departamento);
+			listaCiudades.add(ciudad);
+		}
+       con.desconectar();
+       return listaCiudades;
+	}
 
 }

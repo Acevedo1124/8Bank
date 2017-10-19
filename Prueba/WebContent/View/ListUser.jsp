@@ -58,17 +58,16 @@ function Filtrarusuario(){
 		</script>
 		
 			<tr>
-				<td><c:out value="${usr.Identificacion}"/></td>
-				<td><c:out value="${usr.Nombre}"/></td>
-				<td><c:out value="${usr.Primer_apellido}"/></td>
-				<td><c:out value="${usr.Segundo_apellido}"/></td>
-				<td><c:out value="${usr.Mail}"/></td>
-				<td><c:out value="${usr.Telefono}"/></td>
-				<td><c:out value="${usr.usuario}"/></td>
-				<td><c:out value="${usr.Estado}"/></td>
-				<td><c:out value="${usr.tb_Ciuadades_idtb_Ciuadades}"/></td>
-				<td><a href="ControlUser?accion=Modificar&id=${usr.Identificacion}">Editar </a> </td>
-
+				<td><c:out value="${usr.getIdentificacion()}"/></td>
+				<td><c:out value="${usr.getNombre()}"/></td>
+				<td><c:out value="${usr.getPrimer_apellido()}"/></td>
+				<td><c:out value="${usr.getSegundo_apellido()}"/></td>
+				<td><c:out value="${usr.getMail()}"/></td>
+				<td><c:out value="${usr.getTelefono()}"/></td>
+				<td><c:out value="${usr.getUsuario()}"/></td>
+				<td><c:out value="${usr.getEstado()}"/></td>
+				<td><c:out value="${usr.getIdCiudades()}"/></td>
+				<td><a href="ControlUser?accion=Modificar&id=${usr.getIdentificacion()}">Editar </a> </td>
 			</tr>
 		</c:forEach>
 	</table>
