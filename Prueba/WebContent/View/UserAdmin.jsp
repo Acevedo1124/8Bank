@@ -8,9 +8,9 @@ pageEncoding="ISO-8859-1"%>
 	<title>8 Back</title>
 	<!-- Incluyen los archivos de css -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="css/estilos.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@ pageEncoding="ISO-8859-1"%>
 			<div class="col-md-4">
 				<h1>
 
-					<div class="row">Bienvenido <a id="nombre" value="${nombre}"></a></div>
+					<div class="row">Bienvenido ${nombre}</div>
 				</h1>
 			</div>
 			
@@ -52,40 +52,15 @@ pageEncoding="ISO-8859-1"%>
 	</div>
 
 	<script type="text/javascript">
-		function ocultar() {
-
-
-			
-			document.getElementById("Ver_user").style.display = "none";
-			document.getElementById("Ver_ciudad").style.display = "none";
-
-
-
-		}
-
-
-		function crud_user(){
-			ocultar();
-			document.getElementById("Ver_user").style.display = "block";
-
-
-
-		}
-
-		function crud_ciudad(){
-			ocultar();
-			document.getElementById("Ver_ciudad").style.display = "block";
-
-		}
-
-
-
+	window.onload = function(){
+		history.replaceState({}, "page", "View/UserAdmin.jsp");
+	};
 	</script>
 
 
 	<!-- Incluyen los archivos js	 -->
 	<script src="//code.jquery.com/jquery-latest.js"></script> 
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/ventanas.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ventanas.js"></script>
 </body>
 </html>

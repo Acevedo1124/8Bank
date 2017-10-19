@@ -18,7 +18,7 @@
 	<header  > <!-- Encabezado -->
 		<div class="container">
 			<div class="col-md-2">
-			<a href="Index.jsp" src="img/logo.png">home</a>
+			<img src="Img/G8.jpg" class="img-rounded"  width="100%" >
 				<img src="img/logo.png"  width="130" alt="" class="img-responsive  img-circle">				
 			</div>
 			<div class="col-md-4">
@@ -39,15 +39,23 @@
 						
 						<input type="password" id="password" placeholder="Contraseña:" class="form-control" required>
 					</div>
+
 					
 					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
+
 					<i class="fa fa-refresh fa-spin"></i>
 					</div>
-					<h2 id="respuesta"></h2>				
+					<h3 >${Respuesta}</h3>				
 			</div>
 		</div>
 		
-	</header>	
+	</header>
+	 
+	
+		
+	<div class="container">
+	<img src="Img/fondo.jpg" class="img-rounded"  width="100%" >
+	</div>
 	
 	
 	
