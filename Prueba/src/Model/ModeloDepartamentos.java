@@ -1,3 +1,8 @@
+
+/*
+ * @autor: Yina Muñoz, Santiago agudelo
+ * 
+ */
 package Model;
 
 import java.io.IOException;
@@ -27,7 +32,6 @@ public class ModeloDepartamentos extends Conexion{
 		 private Connection jdbcConnection; 
 		 Conexion con;
 		 
-		 
 		public ModeloDepartamentos(String jdbcURL, String jdbcUsername, String jdbcPassword) {
 			super(jdbcURL, jdbcUsername, jdbcPassword);
 			this.jdbcURL = jdbcURL;
@@ -36,10 +40,8 @@ public class ModeloDepartamentos extends Conexion{
 			con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
 			// TODO Auto-generated constructor stub
 		}
-
+		
 		public Departamentos FiltrarDpto(int idDpto, String nombre, Boolean estado) {
-			 
-
 			String sql = "SELECT * FROM tb_departamentos WHERE "
 		            +"idtb_departamentos = '"+idDpto+"' OR nombre = '"+nombre+"'";
 		Statement st ;
@@ -49,7 +51,7 @@ public class ModeloDepartamentos extends Conexion{
 			 st = jdbcConnection.createStatement();
 		     ResultSet result = st.executeQuery(sql);
 		     System.out.println(sql);
-		     Departamentos p = new Departamentos();
+		    Departamentos p = new Departamentos();
 		     while(result.next()){
 		         int id = result.getInt("idtb_departamentos");
 		         String nombreDpto = result.getString("nombre");
@@ -66,10 +68,7 @@ public class ModeloDepartamentos extends Conexion{
 		}
 		return null;
 		}
-		
-		
 		public  List<Departamentos> listarDpto(){
-			
 			
 	        String sql = " SELECT * FROM tb_departamentos";
 	        List<Departamentos> list = new ArrayList<Departamentos>();
@@ -88,8 +87,6 @@ public class ModeloDepartamentos extends Conexion{
 		           p.setNombreDpto(nombreDpto);
 		           p.setEstadoDpto(estadoDpto);
 		           list.add(p);
-		           
-		           
 	            }
 	            st.close();
 	            con.desconectar();
@@ -99,8 +96,6 @@ public class ModeloDepartamentos extends Conexion{
 	   }
 	   return null;
 	}
-		
-		
 		public void crearDpto(Departamentos pf){
 
 	        String nombre = pf.getNombreDpto();
@@ -118,9 +113,6 @@ public class ModeloDepartamentos extends Conexion{
 		        Logger.getLogger(ModeloDepartamentos.class.getName()).log(Level.SEVERE, null, ex);
 		    }
 		  }
-	    
-		
-		
 		
 		/*
 		

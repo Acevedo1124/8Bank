@@ -36,7 +36,6 @@ public class ControlRol extends HttpServlet {
 		
 		}
 	}
- 
 	public ControlRol() {
 		super();
 		//Constructor por defecto
@@ -53,7 +52,6 @@ public class ControlRol extends HttpServlet {
 		System.out.println(Usr);
 		try {
 			//Si la variable no está vacia, se verifica su contenido,
-			
 			if (accion !="" && accion!= null) {
 				//SI la acción es listar se llama el método ListRol
 				switch(accion) {
