@@ -36,27 +36,46 @@ function GuardarRol(){
 	}
 }
 </script>
-<header> <!-- Encabezado -->
+	<header  > <!-- Encabezado -->
 		<div class="container">
-		<div class="row">
 			<div class="col-md-2">
-				img
-				<img src="img/logo.jpg"  width="130" alt="" class="img-responsive  img-circle">				
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >								
 			</div>
 			<div class="col-md-4">
-                   <a id="nombre" value="${nombre}">Bienvenido</a>
-		  </div>
-			</div>
-		</div>
-</header>
-	<h1>Agregar Rol</h1>
+				<h1>
+					<div class="row">Agregar Roles</div>
+				</h1>
+			</div>		
+		</div>			
+	</header>
+	
 		<h3>${resultado}</h3>
-<input type="text" id="txtNombre" style="margin: 1em; 
-width: 159px; height: 31px;" placeholder="Nombre" required="required">
-<br/>	
-<textarea id="txtDescripcion" style="margin: 1em; width: 159px; height: 31px;" cols="30" rows="1" style="" placeholder="Descripción" required="required"></textarea>
-<br>
-<input type="submit" value="Guardar" style="margin: 1em;" onclick="GuardarRol()"/>
+	<div class="container"> 
+		<div action="" class="form-horizontal">
+			<div class="form-group">
+				<label for="nombre" class="control-label col-md-2">Digite nombre:</label>
+			</div>
+			<div class="col-md-10">
+				<input type="text" id="txtNombre" class="form-control" placeholder="Nombre" required="required">
+			</div>
+			<label for="nombre" class="control-label col-md-2">Descripción:</label>
+			<div class="col-md-10">
+				<textarea id="txtDescripcion" class="form-control" height: 31px;" cols="" rows="1" style="" placeholder="Descripción" required="required"></textarea>
+			</div>
+			<br>
+			<br>
+			<div class="form-gruop ">
+				<div class="col-md-2 col-md-offset-2">
+					<input type="submit" value="Guardar" class="btn btn-primary" onclick="GuardarRol()"/>
+				</div>
+			</div>
+		</div>		
+	</div>	
+
+			
+
+
+
 
 	<!-- Incluyen los archivos js	 -->
 <script src="//code.jquery.com/jquery-latest.js"></script> 

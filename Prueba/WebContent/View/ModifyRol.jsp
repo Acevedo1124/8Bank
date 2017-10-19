@@ -4,12 +4,25 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../css/estilos.css">
+<link rel="stylesheet" href="css/estilos.css">
 <title>Agregar Rol</title>
 </head>
 <body>
+	<header  > <!-- Encabezado -->
+		<div class="container">
+			<div class="col-md-2">
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >								
+			</div>
+			<div class="col-md-4">
+				<h1>
+					<div class="row">Modificar Roles</div>
+				</h1>
+			</div>			
+			
+		</div>			
+	</header>
 <script type="text/javascript">
 
 function GuardarCambiosRol(){
@@ -38,16 +51,17 @@ function GuardarCambiosRol(){
 	}
 }
 </script>
-	<h1>Modificar Rol</h1>
+	<div class="container">
 		<h3>${resultado}</h3>
+		<div class="form-inline" >
+		<div class="form-group">
 		 <input type="hidden" id="id" value="${Id}" readonly>
-<input type="text" id="txtNombre" style="margin: 1em; width: 159px; height: 31px;" placeholder="Nombre" value="${Nombre}" required="required">
-<br/>	
-<textarea id="txtDescripcion" style="margin: 1em; width: 159px; height: 31px;"
- placeholder="Descripción" cols="30" rows="1" required="required">${Descripcion}</textarea>
+<input type="text" id="txtNombre" class="form-control" placeholder="Nombre" value="${Nombre}" required="required">
+<br/><br>	
+<textarea id="txtDescripcion" class="form-control" placeholder="Descripción" cols="50" rows="4" required="required">${Descripcion}</textarea>
 
-<br>
-<input type="submit" value="Guardar" style="margin: 1em;" onclick=" GuardarCambiosRol()"/>
+<br><br><br>
+<input type="submit" value="Guardar" class="btn btn-primary" onclick=" GuardarCambiosRol()"/>
 
 	<!-- Incluyen los archivos js	 -->
 <script src="//code.jquery.com/jquery-latest.js"></script> 
