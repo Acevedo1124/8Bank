@@ -15,7 +15,7 @@ import Entity.Departamentos;
 import Model.ModeloDepartamentos;
 
 
-@WebServlet("/ControlRol")
+@WebServlet("/ControlDepartamentos")
 public class ControlDepartamentos extends HttpServlet {
 	
 		ModeloDepartamentos Objeto_ModeloDpto;
@@ -66,79 +66,62 @@ public class ControlDepartamentos extends HttpServlet {
 		 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
+			String accion = request.getParameter("action");
 			
-			response.getWriter().append("Served at: ").append(request.getContextPath());
 			//processRequest(request, response);
-			response.setContentType("text/html;charset=UTF-8");
-	        try (PrintWriter out = response.getWriter()) {
-	        	System.out.println("1");
-	        	String crearDpto = request.getParameter("btnGuardar");
-	        	System.out.println(crearDpto);
-	        	 if (crearDpto.equals("guardar")){
-	                String nombreDpto = request.getParameter("txtNombre");
-//	                String estadoDpto = request.getParameter("txtEstado");
-	                System.out.println("2");
-	                Departamentos p = new Departamentos();
-	                p.setNombreDpto(nombreDpto);
-	               
-	                String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-	        		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-	        		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
+	        
 
-
-	                ModeloDepartamentos dp = new ModeloDepartamentos(jdbcURL, jdbcUsername, jdbcPassword);
-	                dp.crearDpto(p);
+				if (accion !="" && accion!= null) {
+					//SI la acción es listar se llama el método ListRol
+					switch(accion) {
+						case "Listar":
+							ListRol(request, response);
+						//SI la acción es Guardar se llama el método GuardarRol
+							break;
+						case "Guardar":
+							GuardarRol(request,response);
+							break;
+						case "Filtrar":
+							//SI la acción es filtrar se llama el método FiltrarRol
+							FiltrarRol(request,response);
+							break;
+						case "Modificar":
+							//SI la acción es filtrar se llama el método FiltrarRol
+							ModificarRol(request,response);
+							break;
+						case "GuardarCambios":
+							//SI la acción es filtrar se llama el método FiltrarRol
+							GuardarCambiosRol(request,response);
+							break;
+						default:
+							ListRol(request, response);
+							break;
+					}
+				}
 	                
-
-	                request.getRequestDispatcher("View/Departamentos.jsp").include(request, response);
-	             }
-	        }
-			catch (Exception e) {
-				
-				 System.out.println("2");
-			}
+	             
 		}
+		
+		private void GuardarDepartamentos(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+			String nombreDpto = request.getParameter("txtNombre");
+	        Departamentos p = new Departamentos();
+	        p.setNombreDpto(nombreDpto);
+	       
+	        String jdbcURL = getServletContext().getInitParameter("jdbcURL");
+			String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
+			String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
+	
+	
+	        ModeloDepartamentos dp = new ModeloDepartamentos(jdbcURL, jdbcUsername, jdbcPassword);
+	        dp.crearDpto(p);
+	        
+	
+	        request.getRequestDispatcher("View/Departamentos.jsp").include(request, response);
+		}	
+}
+		
 
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 		 */
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// TODO Auto-generated method stub
-			//doGet(request, response);
-			//processRequest(request, response);
-			response.setContentType("text/html;charset=UTF-8");
-	        try (PrintWriter out = response.getWriter()) {
-	        	
-	        	String crearDpto = request.getParameter("btnGuardar");
-	        	 if (crearDpto.equals("guardar")){
-	                String nombreDpto= request.getParameter("txtNombre");
-//	                Boolean estadoDpto = request.getParameter("txtEstado");
-	                
-	                Departamentos p = new Departamentos();
-	                p.setNombreDpto(nombreDpto);
-	                p.setEstadoDpto(true);
-	                
-	                String jdbcURL = getServletContext().getInitParameter("jdbcURL");
-	        		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
-	        		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
-
-
-	                ModeloDepartamentos dp = new ModeloDepartamentos(jdbcURL, jdbcUsername, jdbcPassword);
-	                dp.crearDpto(p);
-	                
-
-	                request.getRequestDispatcher("FormularioPerfil.jsp").include(request, response);
-	               
-	             }
-	        }
-		}
 		
-//		private void index (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-//			
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-//			//se despacha al cliente a la página en el dispatcher
-//				dispatcher.forward(request, response);
-//		}
-
-	}
-

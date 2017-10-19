@@ -37,19 +37,16 @@ public class ControlRol extends HttpServlet {
 		}
 	}
  
-
 	public ControlRol() {
 		super();
 		//Constructor por defecto
 	}
- 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//Método que se ejecuta al cargar el controlador
 		
 		//Parámetro Usr el cual sirve para verificar si un nombre existe en la base de datos
-		Usr = request.getParameter("Usr");
+		
 		//Parámetro acción, que sirve para identificar la acción que se desea realizar
 		//Puede ser Listrar, Guardar, Filtrar
 		String accion = request.getParameter("action");
@@ -97,10 +94,7 @@ public class ControlRol extends HttpServlet {
 			//Se obtiene cualquier excepción SQL que ocurra en el proceso
 			e.getStackTrace();
 		}
-		
-		
 	}
- 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -202,7 +196,6 @@ public class ControlRol extends HttpServlet {
 			dispatcher.forward(request, response);
 	}
 	
-	
 	private void Buscar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		//se pide la página a la cual se despacha al usar este método
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/index.jsp");
@@ -251,7 +244,7 @@ public class ControlRol extends HttpServlet {
 			String descripcion = java.net.URLDecoder.decode(request.getParameter("txtDescripcion"), "UTF-8");
 			Rol r = new Rol(id,nombre,descripcion);
 			Objeto_ModeloRol.modificarRol(r);
-			 // asignamos en el objeto el metodomodificarRol
+			 // asignamos en el objeto el metodo modificarRol
 		} 
 		catch (Exception e) {
 			System.out.println("ERRROR al modificar...");
