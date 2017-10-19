@@ -12,10 +12,9 @@ import util.Conexion;
 import java.sql.Statement;
 import java.sql.ResultSet;
 /*
- * @autor: Elivar Largo
- * @web: www.ecodeup.com
+ * @autor: Yina Muñoz, Santiago agudelo
+ * 
  */
- 
 public class ModeloRol {
 	private Conexion con;
 	private Connection connection;
@@ -77,7 +76,6 @@ public class ModeloRol {
 		if (Op==3)
 			// si se llenaron ambos campos Op es igual a 3 lo cual resulta en esta consulta
 			sql = "SELECT * FROM tb_rol where  idtb_rol = " + ID + " and nombre = '" + Nombre + "'";
-		
 		//se obtiene la conexión y se ejecuta el query
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
@@ -97,7 +95,6 @@ public class ModeloRol {
 		return listaRoles;
 	
 		//cierra la conexión
-
 	}
 	//en buscar es una comprovaciòn y función de prueba para el login
 	//lo que se hace es buscar un campo en la base de datos, si existe se retorna true, caso contrario false
@@ -121,11 +118,8 @@ public class ModeloRol {
 			return false;
 		}
 		//cierra la conexión dontro del if y el else ya que dentro de estos se retorna
-
 	}
-	
 	//En guardar rol se obtiene un objeto tipo Rol y se almacena en la base de datos
-	
 	public void guardarRol(Rol RolNuevo){
 		//Se obtiene solo el nombre y la descripción de dicho objeto
 		String nombre = RolNuevo.getNombre();
@@ -147,10 +141,7 @@ public class ModeloRol {
 	    }
 	  }
 	//metodo modificarRol
-	
-	
 public void modificarRol(Rol rolModificar) { //llamo a la clase Rol y le asigno un objeto dentro del método
-		
 		int id = rolModificar.getId();
 		String nombre = rolModificar.getNombre(); //asigno en una variable, lo que tiene el objeto
 		String descripcion = rolModificar.getDescripcion();

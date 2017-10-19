@@ -98,8 +98,7 @@ public class ControlDepartamentos extends HttpServlet {
 							break;
 					}
 				}
-	                
-	             
+	               
 		}
 		
 		private void GuardarDepartamentos(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
