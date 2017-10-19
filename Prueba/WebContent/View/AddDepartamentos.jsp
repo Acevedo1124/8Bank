@@ -10,7 +10,7 @@
 		<form action="/Prueba/ControlDepartamentos" method="get">
 		<input type="text" name="txtNombre">
 
-<button type="submit" name="btnGuardar" value="guardar">Guardar</button>
+<button type="submit" name="action" value="Guardar">Guardar</button>
 </form>
 </body>
 </html>

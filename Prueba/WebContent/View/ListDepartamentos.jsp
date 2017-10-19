@@ -15,7 +15,7 @@
 window.onload = function(){
 	history.replaceState({}, "page", "ControlDepartamentos?action=Listar");
 	
-};
+}; 	
 
 //Funciòn que se ejecuta al darle al botón filtrar o al darle enter dentro de los textbox de filtro
 //redirige al control con los parámetros del filtro de busqueda
@@ -32,9 +32,9 @@ function FiltrarRol(){
 </head>
 <body>
 <div></div>
-	<h1>Lista Rol</h1>
+	<h1>Lista Departamentos</h1>
 	<h3>${resultado}</h3>
-	<input type="button" style="heigth:2em;" value="Agregar registro" onclick="location.href='View/AddRol.jsp'"/>
+	<input type="button" style="heigth:2em;" value="Agregar registro" onclick="location.href='View/AddDepartamentos.jsp'"/>
 	<br/><br/>
 	<input type="text" id="FilterID" placeholder="filtrar por id " onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
 	<input type="text" id="FilterNombre" placeholder="filtrar por nombre" onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
@@ -43,15 +43,13 @@ function FiltrarRol(){
 		<tr>
 		 <td><strong>ID</strong></td>
 		 <td><strong>NOMBRE</strong></td>
-		 <td><strong>DESCRPICION</strong></td>
 		 <td ><strong>ACCIONES</strong></td>
 		</tr>
-		<c:forEach var="rol" items="${lista}">
+		<c:forEach var="Departamentos" items="${lista}">
 			<tr>
-				<td><c:out value="${rol.id}"/></td>
-				<td><c:out value="${rol.nombre}"/></td>
-				<td><c:out value="${rol.descripcion}"/></td>
-				<td><a href="ControlRol?action=Modificar&id=${rol.id}">Editar </a> </td>
+				<td><c:out value="${Departamentos.idDpto}"/></td>
+				<td><c:out value="${Departamentos.nombreDpto}"/></td>
+				<td><a href="ControlDepartamentos?action=Modificar&id=${rol.id}">Editar </a> </td>
 
 			</tr>
 		</c:forEach>
