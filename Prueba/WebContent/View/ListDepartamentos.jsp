@@ -13,7 +13,7 @@
 //Función que se ejecuta al cargar la pàgina, cambia la url en la barra de direcciones, 
 //con el fin de que no se repitan operaciones sobre la base datos al recargar la pàgina
 window.onload = function(){
-	history.replaceState({}, "page", "ControlRol?action=Listar");
+	history.replaceState({}, "page", "ControlDepartamentos?action=Listar");
 	
 };
 

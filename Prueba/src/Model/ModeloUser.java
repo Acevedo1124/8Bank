@@ -153,7 +153,32 @@ public class ModeloUser {
 
 	}
 	
-	public Boolean BuscarNombre(String nombre) throws SQLException {
+	
+	public String Buscarlogin(String user,String pwd) throws SQLException {
+		
+		con.conectar();
+		//Se crea el Query y se ejecuta la consulta
+		String sql = "SELECT * FROM tb_usuario where Usuario='"+ user+"' and Contraseña='"+pwd+"';";
+		System.out.println("sql"+sql);
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = null;
+		resulSet = statement.executeQuery(sql);
+		
+//el Usr consultado existe, resultSet.next() es true, caso contrario es falso.
+		if(resulSet.next()) {
+			
+			String Nombre = resulSet.getString("Nombre");
+			con.desconectar();
+			return Nombre;
+		}
+		else {
+			con.desconectar();
+			return "nada";
+		}
+	}
+	
+	public boolean BuscarNombre(String nombre) throws SQLException {
 		//Inicia la conexión
 		con.conectar();
 		//Se crea el Query y se ejecuta la consulta
@@ -165,6 +190,7 @@ public class ModeloUser {
 		
 //el Usr consultado existe, resultSet.next() es true, caso contrario es falso.
 		if(resulSet.next()) {
+			
 			con.desconectar();
 			return true;
 		}

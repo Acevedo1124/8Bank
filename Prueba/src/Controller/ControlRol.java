@@ -46,7 +46,7 @@ public class ControlRol extends HttpServlet {
 		//Método que se ejecuta al cargar el controlador
 		
 		//Parámetro Usr el cual sirve para verificar si un nombre existe en la base de datos
-		Usr = request.getParameter("Usr");
+		
 		//Parámetro acción, que sirve para identificar la acción que se desea realizar
 		//Puede ser Listrar, Guardar, Filtrar
 		String accion = request.getParameter("action");

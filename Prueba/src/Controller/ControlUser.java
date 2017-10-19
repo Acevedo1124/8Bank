@@ -49,10 +49,10 @@ public class ControlUser extends HttpServlet {
 		
 		Usr = request.getParameter("Usr");
 		
-		String accion = request.getParameter("action");
-		System.out.println(Usr);
+		String accion = request.getParameter("accion");
+		//System.out.println(Usr);
 		try {
-			
+			System.out.println(accion);
 			if (accion !="" && accion!= null) {
 				
 				if (accion.equals("Listar"))
@@ -63,6 +63,9 @@ public class ControlUser extends HttpServlet {
 				
 				if (accion.equals("Filtrar"))
 					FiltrarUsuario(request,response);
+				
+				if (accion.equals("login"))
+					LoginUsuario(request,response);
 			}
 			if (Usr!="" && Usr!= null)
 				//Y si la variable Usr no está vacía la acción se llama el método Buscar
@@ -216,6 +219,40 @@ public class ControlUser extends HttpServlet {
 			
 			System.out.println("ERRROR al buscar...");
 		}
+			dispatcher.forward(request, response);
+	}
+	
+	private void LoginUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		String link ="";
+		Boolean Verificacion;
+		
+		
+		try {
+			String us;
+		
+			String user = request.getParameter("user");
+			String pwd = request.getParameter("pwd");
+			System.out.println("user "+user+"user "+pwd);
+			us  = Objeto_ModeloUser.Buscarlogin(user,pwd);
+			
+			if(us.equals("nada")) {
+				link =  "Index.jsp";
+				request.setAttribute("Respuesta", "Usuario o contraseña no valido");
+				
+			}else {
+				link =  "View/UserAdmin.jsp";
+				request.setAttribute("nombre", us);
+			}
+		}
+		catch(Exception e){
+			
+			System.out.println("ERRROR al buscar..."+e);
+			
+			System.out.println("ERRROR al buscar...");
+		}
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(link);; 
+		
 			dispatcher.forward(request, response);
 	}
 }
