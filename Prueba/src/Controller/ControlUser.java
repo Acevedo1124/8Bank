@@ -10,9 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.parser.Parser;
 
-import Entity.Rol;
+
 import Entity.Usuario;
 
 import java.util.List;
@@ -118,6 +117,7 @@ public class ControlUser extends HttpServlet {
 			System.out.println("ERRROR al listar...");
 		}
 		//se despacha al cliente a la página en el dispatcher
+		System.out.println("esto es req="+request);
 			dispatcher.forward(request, response);
 	}
 	
@@ -190,7 +190,6 @@ public class ControlUser extends HttpServlet {
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);
 	}
-	
 	
 	private void BuscarUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 
