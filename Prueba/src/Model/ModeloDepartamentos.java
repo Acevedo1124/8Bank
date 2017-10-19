@@ -70,7 +70,7 @@ public class ModeloDepartamentos extends Conexion{
 		}
 		public  List<Departamentos> listarDpto(){
 			
-	        String sql = " SELECT * FROM tb_departamentos";
+	        String sql = " SELECT * FROM tb_departamentos where estado = 1";
 	        List<Departamentos> list = new ArrayList<Departamentos>();
 	        Statement st;
 	        try {
@@ -96,10 +96,10 @@ public class ModeloDepartamentos extends Conexion{
 	   }
 	   return null;
 	}
-		public void crearDpto(Departamentos pf){
+		public void crearDpto(Departamentos d){
 
-	        String nombre = pf.getNombreDpto();
-			Boolean estado = pf.getEstadoDpto();
+	        String nombre = d.getNombreDpto();
+			Boolean estado = d.getEstadoDpto();
 			 Statement st;
 		    try {
 		    	con.conectar();
@@ -114,42 +114,39 @@ public class ModeloDepartamentos extends Conexion{
 		    }
 		  }
 		
-		/*
-		
-		public void modificarPerfil(Perfil p) {
-	    	 Statement st;
-	        try {
-	        	
-	        	Conexion con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
-	        	st = jdbcConnection.createStatement();
-	    		 con.getJdbcConnection();
-	    		 
-	    		
-	    		 st.close();
-	             con.desconectar();
-
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-		}  
-	    
-		
-		
-		public void eliminarPerfil(int idPerfil) {
-	    
-	    	Statement st;
-	    try {
-	    	Conexion con = new Conexion(jdbcURL, jdbcUsername, jdbcPassword);
-	    	st = jdbcConnection.createStatement();
-			con.getJdbcConnection();
+		public void modificarDepartamento(Departamentos d) {
 			
-			 st.close();
-	         con.desconectar();
+			int idD = d.getIdDpto();
+			String nombreD = d.getNombreDpto();
+			boolean estadoD = d.getEstadoDpto();
+			d.setIdDpto(idD);
+			d.setNombreDpto(nombreD);
+			d.setEstadoDpto(estadoD);
+			Statement st;
+			
+			try {
+				con.conectar();
+				jdbcConnection = con.getJdbcConnection();
+		    	st = jdbcConnection.createStatement();
+		    	st.executeLargeUpdate("update tb_departamentos set nombre='"+d.getNombreDpto()+"','nombre='"+d.getEstadoDpto()+"' WHERE idtb_Departamentos="+d.getIdDpto()+";");
+			} catch (Exception e) {
+				Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, e);
+			}
+		}
+		public void eliminar(int id) {
+		
+			
+			Statement st;
+			
+			try {
+				con.conectar();
+				jdbcConnection = con.getJdbcConnection();
+		    	st = jdbcConnection.createStatement();
+		    	st.executeLargeUpdate("update tb_departamentos set estado= 0 WHERE idtb_Departamentos="+id+";");
+			} catch (Exception e) {
+				Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, e);
+			}
+		}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	}*/
-	}
-
+}
 
