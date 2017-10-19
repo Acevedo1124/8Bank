@@ -10,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.parser.Parser;
 
+import Entity.Rol;
 import Entity.Usuario;
 
 import java.util.List;
@@ -63,6 +65,9 @@ public class ControlUser extends HttpServlet {
 				
 				if (accion.equals("Filtrar"))
 					FiltrarUsuario(request,response);
+				
+				if (accion.equals("Modificar"))
+					ModificarUsuario(request, response);
 				
 				if (accion.equals("login"))
 					LoginUsuario(request,response);
@@ -157,18 +162,9 @@ public class ControlUser extends HttpServlet {
 		//se crea una lista de roles ya que el filtrado podr
 		List<Usuario> UsuarioTabla;
 		
-		int Identificacion = Integer.parseInt(request.getParameter("Identificacion")); 
-		int Estado = Integer.parseInt(request.getParameter("Estado"));
-		int Borrado= Integer.parseInt(request.getParameter("Borrado"));
-		int idCiudades= Integer.parseInt(request.getParameter("tb_Ciudades_idtb_Ciudades"));
-		String Nombre = request.getParameter("Nombre");
-		String Primer_apellido = request.getParameter("Primer_apellido");
-		String Segundo_apellido= request.getParameter("Segundo_apellido");
-		String Mail = request.getParameter("Mail");
-		String Telefono = request.getParameter("Telefono");
-		String Usuario = request.getParameter("Usuario");
-		String Contraseña = request.getParameter("Contraseña");
-		
+		int Identificacion = Integer.parseInt(request.getParameter("FilterIdentificacion")); 
+		String Nombre = request.getParameter("FilterNombre");
+
 		
 		int Op =0;
 		if (Identificacion!=0)
@@ -220,6 +216,21 @@ public class ControlUser extends HttpServlet {
 			System.out.println("ERRROR al buscar...");
 		}
 			dispatcher.forward(request, response);
+	}
+	
+	private void ModificarUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		int Id = Integer.parseInt(request.getParameter("Identificacion")); 
+		try {
+		List <Usuario> UsuarioTabla =  Objeto_ModeloUser.FiltrarUser(Id, "", 1);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ModifyUser.jsp");
+		request.setAttribute("Identificacion", Id);
+		request.setAttribute("Nombre", UsuarioTabla.get(0).getNombre());
+		dispatcher.forward(request, response);
+		}
+		catch(Exception e) {
+			
+			System.out.println("ERRROR al buscar...");
+		}
 	}
 	
 	private void LoginUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
