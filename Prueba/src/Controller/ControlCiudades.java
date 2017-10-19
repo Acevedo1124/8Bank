@@ -108,10 +108,8 @@ public class ControlCiudades extends HttpServlet {
 	
 	private void EliminarCiudad(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher;
-		int id = Integer.parseInt(request.getParameter(" "));
-		String nombre = request.getParameter(" ");
-		int departamento = Integer.parseInt(request.getParameter(" "));
-		Ciudades ciudad = new Ciudades(id, nombre, departamento);
+		int id = Integer.parseInt(request.getParameter("Id"));
+		Ciudades ciudad = new Ciudades(id,"",0);
 		try {
 			Objeto_ModeloCiudades.eliminar_ciudad(ciudad);
 			dispatcher = request.getRequestDispatcher("ControlCiudades?action=Listar&elimino="+id);

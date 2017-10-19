@@ -27,6 +27,16 @@ function ModificarCiudad(id){
 	location.href = url;	
 }
 
+function EliminarCiudad(id){
+	var con = confirm("Esta seguro que quiere eliminar");
+    if(con == true){
+    	var url = "ControlCiudades?Id=" + id
+		+ "&action=Eliminar";
+		location.href = url;
+    }
+		
+}
+
 </script>
 </head>
 <body>
@@ -53,7 +63,7 @@ function ModificarCiudad(id){
 				<td><c:out value="${ciudad.nombre}"/></td>
 				<td><c:out value="${ciudad.id_departamento}"/></td>
 				<td><input type="button" value="Editar" onclick="ModificarCiudad(${ciudad.id_ciudad});"/></td>
-				<td><input type="button" value="Eliminar" onclick=" "/></td>
+				<td><input type="button" value="Eliminar" onclick="EliminarCiudad(${ciudad.id_ciudad});"/></td>
 				<!-- <td><a href="#">Editar </a> </td> -->			
 				<!-- <td><a href="#">Borrar</a> </td> -->
 			</tr>
