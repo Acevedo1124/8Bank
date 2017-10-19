@@ -39,9 +39,18 @@
 						
 						<input type="password" id="password" placeholder="Contraseña:" class="form-control" required>
 					</div>
+<<<<<<< HEAD
 					<button id="login" class="btn btn-success " >Login</button>
 					
 					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
+=======
+
+					<button id="login" class="btn btn-success " >Login</button>	
+
+					
+					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
+
+>>>>>>> a94fe9efea0890241151e434cdc03a52215c4927
 					<i class="fa fa-refresh fa-spin"></i>
 					</div>
 					<h2 id="respuesta"></h2>				

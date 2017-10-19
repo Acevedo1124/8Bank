@@ -126,6 +126,7 @@ public class ControlRol extends HttpServlet {
 			System.out.println("ERRROR al listar...");
 		}
 		//se despacha al cliente a la página en el dispatcher
+		System.out.println("esto es reqrol="+request);
 			dispatcher.forward(request, response);
 	}
 	
