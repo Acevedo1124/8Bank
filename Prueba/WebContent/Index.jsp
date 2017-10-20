@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	
 	<title>BIENVENIDO A GRUPO 8BANK</title>
 	<!-- Incluyen los archivos de css -->
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
@@ -14,21 +15,17 @@
 
 </head>
 <body>
-
 	<header  > <!-- Encabezado -->
 		<div class="container">
 			<div class="col-md-2">
-			<img src="Img/G8.jpg" class="img-rounded"  width="100%" >
-				<img src="img/logo.png"  width="130" alt="" class="img-responsive  img-circle">				
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >								
 			</div>
 			<div class="col-md-4">
 				<h1>
-
-				<div class="row">GRUPO 8BANK</div>
+					<div class="row">GRUPO 8BANK</div>
 				</h1>
 			</div>
-			<div class="col-md-6">
-				<br>
+			<div class="col-md-6"><br>				
 				<div class="form-inline" >
 					<div class="form-group">
 						<label for="nombre" class="sr-only">Usuario:</label>
@@ -38,27 +35,17 @@
 						<label for="correo" class="sr-only">Contraseña:</label>
 						
 						<input type="password" id="password" placeholder="Contraseña:" class="form-control" required>
-					</div>
-
-					
-					<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
-
-					<i class="fa fa-refresh fa-spin"></i>
-					</div>
-					<h3 >${Respuesta}</h3>				
+				</div>					
+				<button id="login" class="btn btn-success " onclick="pasarvariable()" >Login</button>	
+				<i class="fa fa-refresh fa-spin"></i>
 			</div>
-		</div>
-		
+			<h3 >${Respuesta}</h3>				
+			</div>
+		</div>		
 	</header>
-	 
-	
-		
 	<div class="container">
-	<img src="Img/fondo.jpg" class="img-rounded"  width="100%" >
+		<img src="Img/fondo.jpg" class="img-rounded"  width="100%" >
 	</div>
-	
-	
-	
 
 	<!-- Incluyen los archivos js	 -->
 	<script src="//code.jquery.com/jquery-latest.js"></script> 

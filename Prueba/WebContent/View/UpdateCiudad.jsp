@@ -14,18 +14,44 @@ window.onload = function(){
 };
 
 function ModificarCiudad(){
-	var url = "ControlCiudades?txtId=" + document.getElementById("txtId").value
-			+ "&txtNombre=" +document.getElementById("txtNombre").value
-			+ "&txtDepartamento=" +document.getElementById("txtDepartamento").value
-			+ "&action=Modificar";
-	location.href = url;	
+	
+	var validar=/[A-Za-z\s\.\,]/;
+	var valnum = /[0-9]/
+	var Validacion;
+	if (validar.test(document.getElementById("txtNombre").value) && valnum.test(document.getElementById("txtDepartamento").value)){
+		Validacion=1;
+	}
+	else{
+	alert("!Todos os campos son requeridos!")
+	Validacion = 0;
+	}
+	if (Validacion ==0 || document.getElementById("txtNombre").value == "" || document.getElementById("txtDepartamento").value == ""){
+				
+		if(document.getElementById("txtNombre").value == "")
+			document.getElementById("txtNombre").style.borderColor = "Red";
+		else
+			document.getElementById("txtNombre").style.borderColor = "Green";
+		
+		if(document.getElementById("txtDepartamento").value == "")
+			document.getElementById("txtDepartamento").style.borderColor = "Red";
+		else
+			document.getElementById("txtDepartamento").style.borderColor = "Green";
+	}
+	else{
+		var url = "ControlCiudades?txtId=" + document.getElementById("txtId").value
+		+ "&txtNombre=" +document.getElementById("txtNombre").value
+		+ "&txtDepartamento=" +document.getElementById("txtDepartamento").value
+		+ "&action=Modificar";
+		location.href = url;
+	}	
+	
+		
 }
 </script>
 
 	<h1>Modificar Ciudades</h1>
-		<h3>${resultado}</h3>
-<label>Codigo</label><br/>		
-<input type="text" id="txtId" style="margin: 1em; 
+		<h3>${resultado}</h3>	
+<input type="hidden" id="txtId" style="margin: 1em; 
 width: 159px; height: 31px;" placeholder="Codigo" value="${IdCiudad}">
 <br/>	
 <label>Nombre</label><br/>		
