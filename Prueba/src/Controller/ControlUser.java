@@ -16,6 +16,8 @@ import Entity.Usuario;
 
 import java.util.List;
 
+import Model.ModeloCiudades;
+import Model.ModeloRol;
 import Model.ModeloUser;
  
 
@@ -23,6 +25,8 @@ import Model.ModeloUser;
 public class ControlUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ModeloUser Objeto_ModeloUser;
+	ModeloRol Objeto_ModeloRol;
+	ModeloCiudades Objeto_ModeloCiudades;
 	String Usr;
 	public void init() {
 		 
@@ -31,6 +35,9 @@ public class ControlUser extends HttpServlet {
 		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 		try {
 		
+			Objeto_ModeloCiudades = new ModeloCiudades(jdbcURL, jdbcUsername, jdbcPassword);
+			Objeto_ModeloRol = new ModeloRol(jdbcURL, jdbcUsername, jdbcPassword);
+
 			Objeto_ModeloUser = new ModeloUser(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (Exception e) {
 		
@@ -58,8 +65,10 @@ public class ControlUser extends HttpServlet {
 				
 				if (accion.equals("Listar"))
 					ListUsuario(request, response);
-				
 				if (accion.equals("Guardar"))
+					Guardar(request, response);
+				
+				if (accion.equals("guardarUser"))
 					GuardarUsuario(request,response);
 				
 				if (accion.equals("Filtrar"))
@@ -135,7 +144,7 @@ public class ControlUser extends HttpServlet {
 		String Mail = request.getParameter("txtMail");
 		String Telefono = request.getParameter("txtTelefono");
 		String Usuario = request.getParameter("txtUsuario");
-		String Contraseña = request.getParameter("txtContraseña");
+		String Contraseña = request.getParameter("txtContrasena");
 		int Rol = Integer.parseInt(request.getParameter("Rol"));
 		Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, 
 									Mail, Telefono, Usuario, Contraseña,Rol);
@@ -144,7 +153,7 @@ public class ControlUser extends HttpServlet {
 			//Se llama el mètodo guardar rol y se le lleva el objeto Rol que se va a a guardar.
 			Objeto_ModeloUser.guardarUser(us);
 		
-			dispatcher = request.getRequestDispatcher("ControlUser?action=Listar&guardado="+ Nombre);
+			dispatcher = request.getRequestDispatcher("ControlUser?accion=Listar&guardado="+ Nombre);
 		}
 		catch(Exception e){
 			
@@ -265,5 +274,10 @@ public class ControlUser extends HttpServlet {
 		
 			dispatcher.forward(request, response);
 	}
+	private void Guardar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddUser.jsp");
+		request.setAttribute("nombre", us);
+	}
+	
 }
 
