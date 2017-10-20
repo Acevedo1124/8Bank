@@ -22,7 +22,7 @@
 			</div>
 			<div class="col-md-4">
 				<h1>
-					<div class="row">GRUPO 8BANK</div>
+					<div class="row"> Bienvenido</div>
 				</h1>
 			</div>
 			<div class="col-md-6"><br>				
