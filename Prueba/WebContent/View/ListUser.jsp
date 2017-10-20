@@ -23,13 +23,23 @@ pageEncoding="ISO-8859-1"%>
 			//Funciòn que se ejecuta al darle al botón filtrar o al darle enter dentro de los textbox de filtro
 			//redirige al control con los parámetros del filtro de busqueda
 			function Filtrarusuario(){
-				var url = "Controluser?FilterIdentificacion=" + document.getElementById("FilterIdentificacion").value
+				if (!(/[0-9]/.test(document.getElementById("FilterIdentificacion").value)))
+					document.getElementById("FilterIdentificacion").value = "";
+				var url = "ControlUser?FilterIdentificacion=" + document.getElementById("FilterIdentificacion").value
 				+ "&FilterNombre=" +document.getElementById("FilterNombre").value
 				+ "&accion=Filtrar";
 				location.href = url;
 				
 			}
+			function EliminarUser(id){
+				var con = confirm("Esta seguro que quiere eliminar");
+				if(con == true){
+					var url = "ControlUser?Id=" + id
+					+ "&accion=Eliminar";
+					location.href = url;
+				}
 
+			}
 		</script>
 	</head>
 	<body>
@@ -77,8 +87,9 @@ pageEncoding="ISO-8859-1"%>
 							<td><strong>Telefono</strong></td>
 							<td><strong>usuario</strong></td>
 							<td><strong>Estado</strong></td>
-							<td><strong>Id ciudad</strong></td>
-							<td><strong>Id Rol</strong></td>
+							<td><strong>Ciudad</strong></td>
+							<td><strong>Rol</strong></td>
+							<td colspan="2"><strong>Acciones</strong></td>
 						</tr>
 						<c:forEach var="usr" items="${lista}">
 
@@ -93,13 +104,15 @@ pageEncoding="ISO-8859-1"%>
 							<td><c:out value="${usr.getEstado()}"/></td>
 							<td><c:out value="${usr.getIdCiudades()}"/></td>
 							<td><c:out value="${usr.getRol()}"/></td>
-							<td><a href="ControlUser?accion=Modificar&id=${usr.getIdentificacion()}">Editar </a> </td>
+							<td><a style="color:blue" href="ControlUser?accion=Modificar&id=${usr.getIdentificacion()}">Editar </a> </td>
+							<td><a style="color:blue;cursor:pointer;" onclick="EliminarUser(${usr.getIdentificacion()});">Eliminar</a></td>
+								
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>	
 		<br><br>
-		<input type="button" class="btn btn-primary" value="Volver" onclick="location.href='View/userAdmin.jsp'"/>
+		<input type="button" class="btn btn-primary" value="Volver" onclick="location.href='View/UserAdmin.jsp'"/>
 	</body>
 	</html>

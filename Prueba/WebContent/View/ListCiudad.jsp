@@ -63,7 +63,7 @@ pageEncoding="ISO-8859-1"%>
 	<div class="container">
 		<h3>${resultado}</h3>
 
-		<input type="button" class="btn btn-primary" value="Agregar ciudad" onclick="location.href='View/AddCiudad.jsp'"/>
+		<input type="button" class="btn btn-primary" value="Agregar ciudad" onclick="location.href='ControlCiudades?action=GuardarNuevo'"/>
 		<br/><br/>
 
 		<div class="form-inline" >
@@ -96,8 +96,8 @@ pageEncoding="ISO-8859-1"%>
 							<td><c:out value="${ciudad.id_ciudad}"/></td>
 							<td><c:out value="${ciudad.nombre}"/></td>
 							<td><c:out value="${ciudad.id_departamento}"/></td>
-							<td><input type="button" value="Editar" onclick="ModificarCiudad(${ciudad.id_ciudad});"/></td>
-							<td><input type="button" value="Eliminar" onclick="EliminarCiudad(${ciudad.id_ciudad});"/></td>
+							<td><a style="color:blue" onclick="ModificarCiudad(${ciudad.id_ciudad});">Editar</a></td>
+							<td><a style="color:blue" onclick="EliminarCiudad(${ciudad.id_ciudad});">Eliminar</a></td>
 							<!-- <td><a href="#">Editar </a> </td> -->			
 							<!-- <td><a href="#">Borrar</a> </td> -->
 						</tr>
@@ -106,6 +106,6 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 		</div>
 		<br><br>	
-		<input type="button" class="btn btn-primary" value="Volver" onclick="location.href='View/IndexCiudad.jsp'"/>
+		<input type="button" class="btn btn-primary" value="Volver" onclick="location.href='View/UserAdmin.jsp'"/>
 	</body>
 	</html>

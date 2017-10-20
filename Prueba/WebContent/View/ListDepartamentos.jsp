@@ -60,7 +60,7 @@ function FiltrarRol(){
 			<div class="form-group">
 				<input type="text" class="form-control" id="FilterID" placeholder="filtrar por id " onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
 				<input type="text" class="form-control" id="FilterNombre" placeholder="filtrar por nombre" onkeyup="if (event.keyCode == 13)FiltrarRol()"/>
-				<input type="button"  class="btn btn-primary" value="Filtrar" onclick="FiltrarRol()"/>
+				<input type="button"  class="btn btn-primary" value="Filtrar" onclick="#"/>
 			</div>		
 		</div>
 

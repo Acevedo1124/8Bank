@@ -80,16 +80,17 @@ public class ModeloUser {
 		
 		List<Usuario> listaUser= new ArrayList<Usuario>();
 		
-		String sql="SELECT * FROM tb_usuario";
+		String sql = "SELECT * FROM tb_usuario as usu inner Join tb_ciudades as ciu on usu.tb_Ciuadades_idtb_Ciuadades=ciu.idtb_Ciudades inner Join tb_rol as rol on usu.tb_rol_idtb_rol=rol.idtb_rol where usu.Borrado=0;";
+		//se obtiene la conexión y se ejecuta el query
 		if (Op==1)
 			
-			sql = "SELECT * FROM tb_usuario where Identificacion = " + Id;
+			sql = "SELECT * FROM tb_usuario as usu inner Join tb_ciudades as ciu on usu.tb_Ciuadades_idtb_Ciuadades=ciu.idtb_Ciudades inner Join tb_rol as rol on usu.tb_rol_idtb_rol=rol.idtb_rol where usu.Borrado=0 and Identificacion = " + Id;
 		if (Op==2)
 			
-			sql = "SELECT * FROM tb_usuario where Nombre = '" + nombre + "'";
+			sql = "SELECT * FROM tb_usuario as usu inner Join tb_ciudades as ciu on usu.tb_Ciuadades_idtb_Ciuadades=ciu.idtb_Ciudades inner Join tb_rol as rol on usu.tb_rol_idtb_rol=rol.idtb_rol where usu.Borrado=0 and usu.Nombre = '" + nombre + "'";
 		if (Op==3)
 			
-			sql = "SELECT * FROM tb_usuario where  Identificacion = " + Id + " and Nombre = '" + nombre + "'";
+			sql = "SELECT * FROM tb_usuario as usu inner Join tb_ciudades as ciu on usu.tb_Ciuadades_idtb_Ciuadades=ciu.idtb_Ciudades inner Join tb_rol as rol on usu.tb_rol_idtb_rol=rol.idtb_rol where usu.Borrado=0 and Identificacion = " + Id + " and usu.Nombre = '" + nombre + "'";
 		
 		//se obtiene la conexión y se ejecuta el query
 		connection = con.getJdbcConnection();
@@ -100,17 +101,18 @@ public class ModeloUser {
 		while (resulSet.next()) {
 			//Se obtienen los campos uno a uno y se guardan en la lista previamente creada
 			int Identificacion = resulSet.getInt("Identificacion");
-			int Estado = resulSet.getInt("Estado");
+			int Estado = resulSet.getInt("usu.Estado");
 			int Borrado= resulSet.getInt("Borrado");
-			String idCiudades= resulSet.getString("tb_Ciudades_idtb_Ciudades");
-			String Nombre = resulSet.getString("Nombre");
+			String idCiudades= resulSet.getString("ciu.nombre");
+			
+			String Nombre = resulSet.getString("usu.Nombre");
 			String Primer_apellido = resulSet.getString("Primer_apellido");
 			String Segundo_apellido= resulSet.getString("Segundo_apellido");
 			String Mail = resulSet.getString("Mail");
 			String Telefono = resulSet.getString("Telefono");
 			String Usuario = resulSet.getString("Usuario");
 			String Contraseña = resulSet.getString("Contraseña");
-			String Rol = resulSet.getString("tb_rol_idtb_rol");
+			String Rol = resulSet.getString("rol.nombre");
 			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña, Rol);
 			
 			listaUser.add(us);
@@ -231,6 +233,57 @@ public class ModeloUser {
 	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	  }
+	
+public void ModUser(Usuario UserNuevo,int IdOld){
 
+		
+		//Se obtiene solo el nombre y la descripción de dicho objeto
+		
+		Statement st;
+	    try {
+	    	//se conecta y se obtiene la conexión.
+	    	con.conectar();
+	    	connection = con.getJdbcConnection();
+	    	st = connection.createStatement();
+	    	//se prepara el string de la consulta, solo se agrega nombre y descripción
+	    	// ya que el ID es un valor auto-incremento y no es necesario especificarlo
+	    	
+	    	String sql= "update tb_usuario set Identificacion="+UserNuevo.getIdentificacion()+", Nombre='"+UserNuevo.getNombre()+"', "
+	    			+ "Primer_apellido='"+UserNuevo.getPrimer_apellido()+"', Segundo_apellido='"+UserNuevo.getSegundo_apellido()+"', Mail='"+UserNuevo.getMail()+"', "
+	    					+ "Telefono="+UserNuevo.getTelefono()+", Usuario='"+UserNuevo.getUsuario()+"', Contraseña='"+UserNuevo.getContraseña()+"', Estado="+UserNuevo.getEstado()+", "
+	    							+ "Borrado="+UserNuevo.getBorrado()+", tb_Ciuadades_idtb_Ciuadades="+UserNuevo.getIdCiudades()+", "
+	    									+ "tb_rol_idtb_rol="+UserNuevo.getRol()+" where Identificacion="+IdOld+";";
+	    st.execute(sql); 
+	    st.close();
+	    //se ejecuta y se  cierra tanto el statement como la conexiòn
+        con.desconectar();
+	    } catch (SQLException ex) {
+	        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	  }
+
+public void BorrarUser(int identificacion, int borrado) {
+	Statement st;
+    try {
+    	//se conecta y se obtiene la conexión.
+    	con.conectar();
+    	connection = con.getJdbcConnection();
+    	st = connection.createStatement();
+    	//se prepara el string de la consulta, solo se agrega nombre y descripción
+    	// ya que el ID es un valor auto-incremento y no es necesario especificarlo
+    	
+    	String sql= "update tb_usuario set  Borrado="+borrado+" where Identificacion="+identificacion+";";
+    st.execute(sql); 
+    st.close();
+    //se ejecuta y se  cierra tanto el statement como la conexiòn
+    con.desconectar();
+    } catch (SQLException ex) {
+        Logger.getLogger(ModeloRol.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+	
+	
 }
+
+
 

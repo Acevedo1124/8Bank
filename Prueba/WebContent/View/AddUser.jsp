@@ -14,6 +14,77 @@ pageEncoding="ISO-8859-1"%>
 <body>
 	<script type="text/javascript">
 		function GuardarUsuario(){
+			var NomApe=/[A-Za-z]/;
+			var TelCiuRol=/[0-9]/;
+			var Usu=/[A-Za-z0-9\.\-\_]/;
+			var Corr= /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+			var valid = 1;
+
+			if(NomApe.test(document.getElementsByName("Nombre")[0].value) && 
+					NomApe.test(document.getElementsByName("Primer_apellido")[0].value) &&
+					NomApe.test(document.getElementsByName("Segundo_apellido")[0].value))
+				if(TelCiuRol.test(document.getElementsByName("Telefono")[0].value) && 
+						TelCiuRol.test(document.getElementsByName("tb_Ciuadades_idtb_Ciuadades")[0].value) &&
+						TelCiuRol.test(document.getElementsByName("tb_Rol_idtb_Rol")[0].value) &&
+						TelCiuRol.test(document.getElementsByName("tb_Rol_idtb_Rol")[0].value))
+					if(Usu.test(document.getElementsByName("Usuario")[0].value))
+						if(Corr.test(document.getElementsByName("Mail")[0].value))
+							valid = 1;
+						else{
+							alert("Complete correctamente el campo Correo Electrónico");
+							valid = 0;
+						}
+					else{
+						alert("Complete correctamente el campo usuario");
+						valid = 0;
+					}
+				else{
+					alert("Complete correctamente los campos de Teléfono, Ciudad o Rol");
+					valid = 0;
+				}
+			else{
+				alert("Complete correctamente los campos de nombre o apellido");
+				valid = 0;
+			}
+			
+			
+			
+			
+				
+			
+			
+			if (document.getElementsByName("Identificacion")[0].value=="" || document.getElementsByName("Nombre")[0].value=="" || 
+					document.getElementsByName("Segundo_apellido")[0].value=="" || document.getElementsByName("Primer_apellido")[0].value=="" ||
+					document.getElementsByName("Mail")[0].value=="" ||document.getElementsByName("Telefono")[0].value=="" ||
+					document.getElementsByName("Usuario")[0].value=="" ||document.getElementsByName("Contraseña")[0].value=="" ||
+					document.getElementsByName("tb_Ciuadades_idtb_Ciuadades")[0].value=="0" ||document.getElementsByName("tb_Rol_idtb_Rol")[0].value=="0" )
+			{
+				alert("Por favor complete los campos");
+				valid = 0;
+			}
+			
+			if (document.getElementsByName("Contraseña")[0].value.length<6)
+			{
+				alert("La contraseña debe tener mínimo 6 caractéres");
+				valid = 0;
+			}
+				
+			
+			for (var i=0; i<document.getElementById("Ids").options.length;i++){
+				if (document.getElementsByName("Identificacion")[0].value==document.getElementById("Ids").options[i].value){
+					var valid = 0;	
+					alert("Esa Identificación ya existe en la base de datos");
+				}
+				
+			}
+			for (var i=0; i<document.getElementById("Usuarios").options.length;i++){
+				if (document.getElementsByName("Usuario")[0].value==document.getElementById("Usuarios").options[i].value){
+					var valid = 0;	
+					alert("Ese Usuario ya existe en la base de datos");
+				}
+			}
+			
+			if(valid==1){
 			var url = "/Prueba/ControlUser?Identificacion=" + encodeURIComponent(document.getElementsByName("Identificacion")[0].value)
 			+ "&txtNombre=" +encodeURIComponent(document.getElementsByName("Nombre")[0].value)
 			+ "&txtPrimer_apellido=" +encodeURIComponent(document.getElementsByName("Primer_apellido")[0].value)
@@ -26,7 +97,7 @@ pageEncoding="ISO-8859-1"%>
 			+ "&accion=guardarUser&Rol="+document.getElementsByName("tb_Rol_idtb_Rol")[0].value;
 			location.href = url;
 			
-
+			}
 		}
 	</script>
 		<header  > <!-- Encabezado -->
@@ -43,7 +114,22 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 		</div>		
 	</header>
-	
+	<select id="Ids" class="form-control" style="display:none">
+							<option value="0" selected>Ids</option>
+							<c:forEach items="${Ident}" var="Id">
+							<c:if test="${Id != selected}">
+							<option value="${Id.getIdentificacion()}"></option>
+						</c:if>
+					</c:forEach>
+				</select>
+				<select id="Usuarios" class="form-control" style="display:none">
+							<option value="0" selected>Usuarios</option>
+							<c:forEach items="${Usua}" var="usu">
+							<c:if test="${usu != selected}">
+							<option value="${usu.getUsuario()}"></option>
+						</c:if>
+					</c:forEach>
+				</select>
 	<h3>${resultado}</h3>
 	<form id="tb_usuario" method="get" name="registro" class="form-horizontal"> 
 		<div class="modal-body"> 
@@ -106,7 +192,7 @@ pageEncoding="ISO-8859-1"%>
 	<div class="col-md-4"> 
 		<input name="Usuario" type="text" placeholder="Ingresar Usuario" class="form-control " > 
 	</div><br><br> 
-	<label for="Contraseña" class="control-label col-md-2">Contraseña:</label> 
+	<label for="Contraseña" class="control-label col-md-2" min="6">Contraseña:</label> 
 	<div class="col-md-4"> 
 		<br><input name="Contraseña" type="password" placeholder="Ingresar Contraseña" class="form-control " > 
 	</div> 

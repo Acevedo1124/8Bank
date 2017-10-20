@@ -3,17 +3,15 @@ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="css/estilos.css">
 	<title>Agregar Ciudades</title>
 
 	<script type="text/javascript">
-		window.onload = function(){
-			history.replaceState({}, "page", "ControlCiudades?action=Listar");	
-		};
 
 		function GuardarCiudad(){
 
@@ -40,7 +38,7 @@ pageEncoding="ISO-8859-1"%>
 					document.getElementById("txtDepartamento").style.borderColor = "Green";
 			}
 			else{
-				var url = "../ControlCiudades?txtNombre=" +document.getElementById("txtNombre").value
+				var url = "ControlCiudades?txtNombre=" +document.getElementById("txtNombre").value
 				+ "&txtDepartamento=" +document.getElementById("txtDepartamento").value
 				+ "&action=Guardar";
 				location.href = url;
@@ -53,9 +51,6 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 	<script type="text/javascript">
-		window.onload = function(){
-			history.replaceState({}, "page", "ControlCiudades?action=Listar");	
-		};
 
 		function GuardarCiudad(){
 
@@ -82,7 +77,7 @@ pageEncoding="ISO-8859-1"%>
 					document.getElementById("txtDepartamento").style.borderColor = "Green";
 			}
 			else{
-				var url = "../ControlCiudades?txtNombre=" +document.getElementById("txtNombre").value
+				var url = "ControlCiudades?txtNombre=" +document.getElementById("txtNombre").value
 				+ "&txtDepartamento=" +document.getElementById("txtDepartamento").value
 				+ "&action=Guardar";
 				location.href = url;
@@ -122,10 +117,14 @@ pageEncoding="ISO-8859-1"%>
 				</div>
 				<label class="control-label col-md-2">Seleccionar Departamento</label><br/>
 				<div class="col-md-8">	
-					<select class="form-control " >
-						<option value="0">Seleccionar</option>
-						<option value="${IdDepar}">${nombre}</option>
-					</select>
+					<select id="txtDepartamento" class="form-control">
+							<option value="0" selected>Departamentos</option>
+							<c:forEach items="${Dpto}" var="Dep">
+							<c:if test="${Dep != selected}">
+							<option value="${Dep.idDpto}">${Dep.nombreDpto}</option>
+						</c:if>
+					</c:forEach>
+				</select>
 				</div>
 			</div>
 			<div class="form-group">
