@@ -3,15 +3,15 @@
   <display-name>Prueba</display-name>
   <context-param>
     <param-name>jdbcURL</param-name>
-    <param-value>jdbc:mysql://localhost:3306/dbbanco</param-value>
+    <param-value>jdbc:mysql://192.168.3.187:3306/dbbanco</param-value>
   </context-param>
   <context-param>
     <param-name>jdbcUsername</param-name>
-    <param-value>root</param-value>
+    <param-value>Bank</param-value>
   </context-param>
   <context-param>
     <param-name>jdbcPassword</param-name>
-    <param-value></param-value>
+    <param-value>knab</param-value>
   </context-param>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
