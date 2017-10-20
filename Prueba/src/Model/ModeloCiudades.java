@@ -63,13 +63,13 @@ public class ModeloCiudades {
 	public List<Ciudades>  modificarXid(String Id) throws SQLException {
 		con.conectar(); 
 		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
-		String sql = "SELECT * FROM tb_ciudades WHERE idtb_Ciudades = '"+ Id +"';";
+		String sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos WHERE idtb_Ciudades = '"+ Id +"';";
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = statement.executeQuery(sql);
 		while (resulSet.next()) {
 			int id =resulSet.getInt("idtb_Ciudades");
-			String nombre = resulSet.getString("nombre");
+			String nombre = resulSet.getString("ciu.nombre");
 			String departamento =resulSet.getString("dpto.nombre");
 			Ciudades ciudad = new Ciudades(id, nombre, departamento);
 			listaCiudades.add(ciudad);

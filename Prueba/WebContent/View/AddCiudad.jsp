@@ -128,13 +128,16 @@ pageEncoding="ISO-8859-1"%>
 				</div>
 			</div>
 			<div class="form-group">
+				<div class="col-md-6 col-md-offset-2">
 				<button value="guardar" class="btn btn-primary" onclick="GuardarCiudad()">Guardar</button>
+				<input type="button" class="btn btn-primary" value="Volver"  onclick="location.href = '../ControlCiudades?action=Listar'" />
+				</div>
 			</div>
 		</div>
 	</div>
 	<br/>
 	
-	<input type="button" class="btn btn-primary" value="Volver"  onclick="location.href = '../ControlCiudades?action=Listar'" />
+	
 
 </body>
 </html>

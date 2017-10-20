@@ -87,19 +87,18 @@ pageEncoding="ISO-8859-1"%>
 					<table class="table table-striped">
 						<tr class="success">
 							<td><strong>Id</strong></td>
-							<td><strong>Nombree</strong></td>
+							<td><strong>Nombre</strong></td>
 							<td><strong>Departamento</strong></td>
-							<td colspan="2"><strong> </strong></td>
+							<td colspan="2"><strong>Acciones </strong></td>
 						</tr>
 						<c:forEach var="ciudad" items="${lista}">
 						<tr>
 							<td><c:out value="${ciudad.id_ciudad}"/></td>
 							<td><c:out value="${ciudad.nombre}"/></td>
 							<td><c:out value="${ciudad.id_departamento}"/></td>
-							<td><a style="color:blue" onclick="ModificarCiudad(${ciudad.id_ciudad});">Editar</a></td>
-							<td><a style="color:blue" onclick="EliminarCiudad(${ciudad.id_ciudad});">Eliminar</a></td>
-							<!-- <td><a href="#">Editar </a> </td> -->			
-							<!-- <td><a href="#">Borrar</a> </td> -->
+							<td><a style="color:blue;cursor:pointer" onclick="ModificarCiudad(${ciudad.id_ciudad});">Editar</a></td>
+							<td><a style="color:blue;cursor:pointer" onclick="EliminarCiudad(${ciudad.id_ciudad});">Eliminar</a></td>
+
 						</tr>
 					</c:forEach>
 				</table>

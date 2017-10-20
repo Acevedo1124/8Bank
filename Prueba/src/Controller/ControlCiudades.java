@@ -193,6 +193,20 @@ public class ControlCiudades extends HttpServlet {
 	}
 	
 	private void ModificarXid(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		
+		
+		List<Departamentos> ListaDpto;
+		try {
+ 		ListaDpto=Objeto_ModeloDepartamentos.listarDpto();
+			
+			
+			request.setAttribute("Dpto", ListaDpto);	
+			
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al buscar...");
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/UpdateCiudad.jsp");
 		List<Ciudades> CiudadTabla;
 		String Id = request.getParameter("FilterId");
