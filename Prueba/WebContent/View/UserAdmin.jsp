@@ -36,7 +36,7 @@ pageEncoding="ISO-8859-1"%>
 		
 		<div class="col-md-3"><br><br><br>
 			<button id="btn_user" class="btn btn-success " onclick="crud_user()" >Usuarios</button><br><br><br>
-			<button id="btn_cuidad" class="btn btn-success " onclick="crud_ciudad()" >Ciudad</button><br><br><br>
+			<button id="btn_cuidad" class="btn btn-success " onclick="location.href = '../ControlCiudades?action=Listar'" >Ciudad</button><br><br><br>
 			<button id="btn_rol" class="btn btn-success " onclick="crud_rol()" >Roles</button><br><br><br>
 
 
