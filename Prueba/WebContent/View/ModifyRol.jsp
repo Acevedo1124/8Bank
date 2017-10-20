@@ -46,7 +46,7 @@ pageEncoding="ISO-8859-1"%>
 			else{
 				var url = "/Prueba/ControlRol?txtNombre=" + encodeURIComponent(document.getElementById("txtNombre").value)
 				+ "&txtDescripcion=" +encodeURIComponent(document.getElementById("txtDescripcion").value)
-				+ "&action=GuardarCambios";
+				+ "&action=GuardarCambios&id="+encodeURIComponent(document.getElementById("id").value);
 				location.href = url;
 			}
 		}

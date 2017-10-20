@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import Entity.Ciudades;
+import Entity.Rol;
 import Entity.Usuario;
 
 import java.util.List;
@@ -276,6 +277,14 @@ public class ControlUser extends HttpServlet {
 	}
 	private void Guardar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddUser.jsp");
+		List<Rol> ListaRol;
+		List<Ciudades> ListaCuidades;
+		try {
+			
+		}
+		catch(Exception e){
+			
+		}
 		request.setAttribute("nombre", us);
 	}
 	
