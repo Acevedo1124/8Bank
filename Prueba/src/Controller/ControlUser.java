@@ -126,19 +126,19 @@ public class ControlUser extends HttpServlet {
 		RequestDispatcher dispatcher;
 		//Al guardar se le pide al usuario el nombre y la descripción, las cuales están como parámetro.
 		int Identificacion = Integer.parseInt(request.getParameter("Identificacion")); 
-		int Estado = Integer.parseInt(request.getParameter("Estado"));
-		int Borrado= Integer.parseInt(request.getParameter("Borrado"));
-		int idCiudades= Integer.parseInt(request.getParameter("tb_Ciudades_idtb_Ciudades"));
-		String Nombre = request.getParameter("Nombre");
-		String Primer_apellido = request.getParameter("Primer_apellido");
-		String Segundo_apellido= request.getParameter("Segundo_apellido");
-		String Mail = request.getParameter("Mail");
-		String Telefono = request.getParameter("Telefono");
-		String Usuario = request.getParameter("Usuario");
-		String Contraseña = request.getParameter("Contraseña");
-		
+		int Estado = 1;
+		int Borrado= 0;
+		int idCiudades= Integer.parseInt(request.getParameter("txtIdCiudad"));
+		String Nombre = request.getParameter("txtNombre");
+		String Primer_apellido = request.getParameter("txtPrimer_apellido");
+		String Segundo_apellido= request.getParameter("txtSegundo_apellido");
+		String Mail = request.getParameter("txtMail");
+		String Telefono = request.getParameter("txtTelefono");
+		String Usuario = request.getParameter("txtUsuario");
+		String Contraseña = request.getParameter("txtContraseña");
+		int Rol = Integer.parseInt(request.getParameter("Rol"));
 		Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, 
-									Mail, Telefono, Usuario, Contraseña);
+									Mail, Telefono, Usuario, Contraseña,Rol);
 		
 		try {		
 			//Se llama el mètodo guardar rol y se le lleva el objeto Rol que se va a a guardar.

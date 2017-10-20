@@ -13,17 +13,16 @@
 <body>
 <script type="text/javascript">
 function GuardarUsuario(){
-	var url = "/Prueba/ControlUser?txtIdentificacion=" + encodeURIComponent(document.getElementById("txtIdentificacion").value)
-			+ "&txtNombre" +encodeURIComponent(document.getElementById("txtNombre").value)
-			+ "&txtPrimer_apellido" +encodeURIComponent(document.getElementById("txtPrimer_apellido").value)
-			+ "&txtSegundo_apellido" +encodeURIComponent(document.getElementById("txtSegundo_apellido").value)
-			+ "&txtMail" +encodeURIComponent(document.getElementById("txtMail").value)
-			+ "&txtTelefono" +encodeURIComponent(document.getElementById("txtTelefono").value)
-			+ "&txtUsuario" +encodeURIComponent(document.getElementById("txtUsuario").value)
-			+ "&txtContraseña" +encodeURIComponent(document.getElementById("txtContraseña").value)
-			+ "&txtIdCiudad" +encodeURIComponent(document.getElementById("txtIdCiudad").value)
-			+ "&cboEstado" +encodeURIComponent(document.getElementById("cboEstado").value)
-			+ "&accion=guardarUser";
+	var url = "/Prueba/ControlUser?Identificacion=" + encodeURIComponent(document.getElementsByName("Identificacion").value)
+			+ "&txtNombre" +encodeURIComponent(document.getElementsByName("Nombre").value)
+			+ "&txtPrimer_apellido" +encodeURIComponent(document.getElementsByName("Primer_apellido").value)
+			+ "&txtSegundo_apellido" +encodeURIComponent(document.getElementsByName("Segundo_apellido").value)
+			+ "&txtMail" +encodeURIComponent(document.getElementsByName("Mail").value)
+			+ "&txtTelefono" +encodeURIComponent(document.getElementsByName("Telefono").value)
+			+ "&txtUsuario" +encodeURIComponent(document.getElementsByName("Usuario").value)
+			+ "&txtContraseña" +encodeURIComponent(document.getElementsByName("Contraseña").value)
+			+ "&txtIdCiudad" +encodeURIComponent(document.getElementsByName("tb_Ciuadades_idtb_Ciuadades").value)	
+			+ "&accion=guardarUser&Rol="+document.getElementsByName("tb_Rol_idtb_Rol").value;
 	location.href = url;
 			
 	
@@ -65,11 +64,20 @@ function GuardarUsuario(){
 	</div><br><br>
 	<label for="tb_Ciuadades_idtb_Ciuadades" class="control-label col-md-2">Id Ciudad:</label> 
 	<div class="col-md-4"> 
-	<select  name="cboperfil" class="control-label col-md-2">
-                                <option value="">-Seleccione-</option>
-                                <option value="Admin">Admin</option>
-                                <option value="Cliente" >Cliente</option>
-                                <option value="Otro" >Otro</option>     
+	<select  name="tb_Ciuadades_idtb_Ciuadades" class="control-label col-md-2">
+                                <option value="1">-Seleccione-</option>
+                                <option value="2">Med</option>
+                                <option value="3" >Pas</option>
+                                <option value="4" >Otro</option>     
+                            </select>
+	</div><br><br>  
+		<label for="tb_Rol_idtb_Rol" class="control-label col-md-2">Id Rol:</label> 
+	<div class="col-md-4"> 
+	<select  name="tb_Rol_idtb_Rol" class="control-label col-md-2">
+                                <option value="1">-Seleccione-</option>
+                                <option value="2">Admin</option>
+                                <option value="3" >Pas</option>
+                                <option value="4" >Otro</option>     
                             </select>
 	</div><br><br>  
 	<label for="Usuario" class="control-label col-md-2">Usuario:</label> 
@@ -85,7 +93,7 @@ function GuardarUsuario(){
 	</div> 
 	<div class="modal-footer"> 
 	
-	<button type="button" class="btn btn-success" onclick="form_registrar()">Guardar</button> 
+	<button type="button" class="btn btn-success" onclick="GuardarUsuario()">Guardar</button> 
 	</div> 
 	</form> 
 
