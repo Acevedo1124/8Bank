@@ -110,11 +110,6 @@ pageEncoding="ISO-8859-1"%>
 				<div class="col-md-10">		
 					<input type="text" class="form-control" id="txtNombre" placeholder="Nombre">
 				</div>
-			
-				<label class="control-label col-md-2">Codigo Ciudad</label><br/>
-				<div class="col-md-10">	
-					<input type="text" id="txtDepartamento" class="form-control" placeholder="Departamento">
-				</div>
 				<label class="control-label col-md-2">Seleccionar Departamento</label><br/>
 				<div class="col-md-8">	
 					<select id="txtDepartamento" class="form-control">
@@ -130,7 +125,7 @@ pageEncoding="ISO-8859-1"%>
 			<div class="form-group">
 				<div class="col-md-6 col-md-offset-2">
 				<button value="guardar" class="btn btn-primary" onclick="GuardarCiudad()">Guardar</button>
-				<input type="button" class="btn btn-primary" value="Volver"  onclick="location.href = '../ControlCiudades?action=Listar'" />
+				<input type="button" class="btn btn-primary" value="Volver"  onclick="location.href = 'ControlCiudades?action=Listar'" />
 				</div>
 			</div>
 		</div>
