@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: administrador
+=======
+Built-By: cristian.c.meneses
+>>>>>>> dc2231c9db130a2cdfb45fdb645fd80f95642f9e
 Build-Jdk: 1.8.0_144
 Created-By: Maven Integration for Eclipse
 

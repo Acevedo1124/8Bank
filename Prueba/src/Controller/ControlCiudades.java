@@ -11,13 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import Entity.Ciudades;
+import Entity.Departamentos;
 import Entity.Rol;
+import Entity.Usuario;
 import Model.ModeloCiudades;
+import Model.ModeloDepartamentos;
 
 @WebServlet("/ControlCiudades")
 public class ControlCiudades extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ModeloCiudades Objeto_ModeloCiudades;
+	ModeloDepartamentos Objeto_ModeloDepartamentos;
 	String Ciu;
 	public void init() {
 		String jdbcURL = getServletContext().getInitParameter("jdbcURL");
@@ -25,6 +29,7 @@ public class ControlCiudades extends HttpServlet {
 		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 		try {
 			Objeto_ModeloCiudades = new ModeloCiudades(jdbcURL, jdbcUsername, jdbcPassword);
+			Objeto_ModeloDepartamentos = new ModeloDepartamentos(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (Exception e) {
 		
 		}
@@ -54,6 +59,8 @@ public class ControlCiudades extends HttpServlet {
 					FiltrarCiudad(request,response);
 				if (accion.equals("ModificarXid"))
 					ModificarXid(request,response);
+				if (accion.equals("GuardarNuevo"))
+					Guardar(request, response);
 			}
 			if (Ciu!="" && Ciu!= null)
 				BuscarCiudad(request, response);
@@ -72,10 +79,9 @@ public class ControlCiudades extends HttpServlet {
 	
 	private void GuardarCiudad(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher;
-		int id = Integer.parseInt(request.getParameter("txtId"));
 		String nombre = request.getParameter("txtNombre");
-		int departamento = Integer.parseInt(request.getParameter("txtDepartamento"));
-		Ciudades ciudad = new Ciudades(id, nombre, departamento);
+		String departamento = (request.getParameter("txtDepartamento"));
+		Ciudades ciudad = new Ciudades(0, nombre, departamento);
 		try {
 			Objeto_ModeloCiudades.guardar_ciudad(ciudad);
 			dispatcher = request.getRequestDispatcher("ControlCiudades?action=Listar&guardado="+nombre);
@@ -92,7 +98,7 @@ public class ControlCiudades extends HttpServlet {
 		RequestDispatcher dispatcher;
 		int id = Integer.parseInt(request.getParameter("txtId"));
 		String nombre = request.getParameter("txtNombre");
-		int departamento = Integer.parseInt(request.getParameter("txtDepartamento"));
+		String departamento = (request.getParameter("txtDepartamento"));
 		Ciudades ciudad = new Ciudades(id, nombre, departamento);
 		try {
 			Objeto_ModeloCiudades.modificar_ciudad(ciudad);
@@ -108,10 +114,8 @@ public class ControlCiudades extends HttpServlet {
 	
 	private void EliminarCiudad(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher;
-		int id = Integer.parseInt(request.getParameter(" "));
-		String nombre = request.getParameter(" ");
-		int departamento = Integer.parseInt(request.getParameter(" "));
-		Ciudades ciudad = new Ciudades(id, nombre, departamento);
+		int id = Integer.parseInt(request.getParameter("Id"));
+		Ciudades ciudad = new Ciudades(id,"","");
 		try {
 			Objeto_ModeloCiudades.eliminar_ciudad(ciudad);
 			dispatcher = request.getRequestDispatcher("ControlCiudades?action=Listar&elimino="+id);
@@ -189,6 +193,20 @@ public class ControlCiudades extends HttpServlet {
 	}
 	
 	private void ModificarXid(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		
+		
+		List<Departamentos> ListaDpto;
+		try {
+ 		ListaDpto=Objeto_ModeloDepartamentos.listarDpto();
+			
+			
+			request.setAttribute("Dpto", ListaDpto);	
+			
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al buscar...");
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/UpdateCiudad.jsp");
 		List<Ciudades> CiudadTabla;
 		String Id = request.getParameter("FilterId");
@@ -203,5 +221,42 @@ public class ControlCiudades extends HttpServlet {
 		}
 			dispatcher.forward(request, response);
 	}
+	
+	private void ListarDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddCiudad.jsp");
+		List<Departamentos> ListaDepartamentos;
+		String Id = request.getParameter("");
+		String Nombre = request.getParameter("");
+		try {
+			ListaDepartamentos =  Objeto_ModeloCiudades.Listar_departamentos(Id, Nombre);
+			request.setAttribute("IdDepar", ListaDepartamentos.get(0).getIdDpto());
+			request.setAttribute("nombre", ListaDepartamentos.get(0).getNombreDpto());
+			request.setAttribute("id_departamento", ListaDepartamentos.get(0).getEstadoDpto());
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al consultar...");
+		}
+			dispatcher.forward(request, response);
+	}
+	
+	private void Guardar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddCiudad.jsp");
+		List<Departamentos> ListaDpto;
+		try {
+ 		ListaDpto=Objeto_ModeloDepartamentos.listarDpto();
+			
+			
+			request.setAttribute("Dpto", ListaDpto);	
+			
+			dispatcher.forward(request, response);
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al buscar...");
+		}
+		
+	}
 
 }
+
+
+

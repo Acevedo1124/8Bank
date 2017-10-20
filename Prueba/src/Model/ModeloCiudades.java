@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 import Entity.Ciudades;
+import Entity.Departamentos;
 import util.Conexion;
 
 public class ModeloCiudades {
@@ -26,16 +27,15 @@ public class ModeloCiudades {
 		con = new Conexion();
 	}
 	
-	public void guardar_ciudad(Ciudades ciudad){		
-		int id = ciudad.getId_ciudad();
+	public void guardar_ciudad(Ciudades ciudad){
 		String nombre = ciudad.getNombre();
-		int departamento = ciudad.getId_departamento();
+		String departamento = ciudad.getId_departamento();
 		Statement st;
 	    try {
 	    	con.conectar();
 	    	connection = con.getJdbcConnection();
 	    	st = connection.createStatement();
-	    st.execute("insert into tb_ciudades (idtb_Ciudades, nombre, tb_Departamentos_idtb_Departamentos) values ('"+id+"','"+nombre+"','"+departamento+"');");
+	    st.execute("insert into tb_ciudades (nombre, tb_Departamentos_idtb_Departamentos,Estado) values ('"+nombre+"',"+departamento+",1);");
 	    st.close();
         con.desconectar();
 	    } catch (SQLException ex) {
@@ -46,7 +46,7 @@ public class ModeloCiudades {
 	public void modificar_ciudad(Ciudades ciudad){		
 		int id = ciudad.getId_ciudad();
 		String nombre = ciudad.getNombre();
-		int departamento = ciudad.getId_departamento();
+		String departamento = ciudad.getId_departamento();
 		Statement st;
 	    try {
 	    	con.conectar();
@@ -63,14 +63,14 @@ public class ModeloCiudades {
 	public List<Ciudades>  modificarXid(String Id) throws SQLException {
 		con.conectar(); 
 		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
-		String sql = "SELECT * FROM tb_ciudades WHERE idtb_Ciudades = '"+ Id +"';";
+		String sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos WHERE idtb_Ciudades = '"+ Id +"';";
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = statement.executeQuery(sql);
 		while (resulSet.next()) {
 			int id =resulSet.getInt("idtb_Ciudades");
-			String nombre = resulSet.getString("nombre");
-			int departamento =resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			String nombre = resulSet.getString("ciu.nombre");
+			String departamento =resulSet.getString("dpto.nombre");
 			Ciudades ciudad = new Ciudades(id, nombre, departamento);
 			listaCiudades.add(ciudad);
 		}
@@ -85,7 +85,7 @@ public class ModeloCiudades {
 	    	con.conectar();
 	    	connection = con.getJdbcConnection();
 	    	st = connection.createStatement();
-	    st.execute("delete from tb_ciudades where idtb_Ciudades = '"+id+"';");
+	    st.execute("update tb_ciudades set Estado = 0 where idtb_Ciudades = '"+id+"'; ");
 	    st.close();
         con.desconectar();
 	    } catch (SQLException ex) {
@@ -96,14 +96,14 @@ public class ModeloCiudades {
 	public List<Ciudades>  listar_ciudades() throws SQLException {
 		con.conectar();
 		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
-		String sql = "SELECT * FROM tb_ciudades";
+		String sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos where ciu.Estado = 1 ";
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = statement.executeQuery(sql);
 		while (resulSet.next()) {
 			int id = resulSet.getInt("idtb_Ciudades");
 			String nombre = resulSet.getString("nombre");
-			int departamento = resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			String departamento = resulSet.getString("dpto.nombre");
 			Ciudades ciudad = new Ciudades(id, nombre, departamento);
 			listaCiudades.add(ciudad);
 		}
@@ -113,7 +113,7 @@ public class ModeloCiudades {
 	
 	public Boolean buscar_ciudades(String ciu) throws SQLException {
 		con.conectar();
-		String sql = "SELECT * FROM tb_ciudades where nombre = '"+ ciu +"';";
+		String sql = "SELECT * FROM tb_ciudades where nombre = '"+ ciu +"' and Estado = 1;";
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = null;
@@ -132,25 +132,44 @@ public class ModeloCiudades {
 	public List<Ciudades>  FiltrarCiudades(String Nombre,String Departamento, int Op) throws SQLException {
 		con.conectar(); 
 		List<Ciudades> listaCiudades= new ArrayList<Ciudades>();
-		String sql = "SELECT * FROM tb_ciudades;";
+		String sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on "
+				+ "tb_Departamentos_idtb_Departamentos=idtb_Departamentos where ciu.Estado = 1";
 		if (Op==1)
-			sql = "SELECT * FROM tb_ciudades where nombre = '"+ Nombre +"';";
+			sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos where ciu.nombre = '"+ Nombre +"' and ciu.Estado = 1;;";
 		if (Op == 2)
-		    sql = "SELECT * FROM tb_ciudades WHERE tb_Departamentos_idtb_Departamentos = '"+ Departamento +"';";
+		    sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos WHERE dpto.nombre = '"+ Departamento +"' and ciu.Estado = 1;;";
 		if (Op == 3)
-			sql = "SELECT * FROM tb_ciudades WHERE nombre = '"+ Nombre +"' and tb_Departamentos_idtb_Departamentos = '"+ Departamento +"';";
+			sql = "SELECT * FROM tb_ciudades as ciu inner join tb_Departamentos as dpto on tb_Departamentos_idtb_Departamentos=idtb_Departamentos WHERE ciu.nombre  = '"+ Nombre +"' and dpto.nombre = '"+ Departamento +"' and ciu.Estado = 1;;";
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resulSet = statement.executeQuery(sql);
 		while (resulSet.next()) {
 			int id =resulSet.getInt("idtb_Ciudades");
 			String nombre = resulSet.getString("nombre");
-			int departamento =resulSet.getInt("tb_Departamentos_idtb_Departamentos");
+			String departamento =resulSet.getString("dpto.nombre");
 			Ciudades ciudad = new Ciudades(id, nombre, departamento);
 			listaCiudades.add(ciudad);
 		}
        con.desconectar();
        return listaCiudades;
+	}
+	
+	public List<Departamentos>  Listar_departamentos(String Id, String Nombre) throws SQLException {
+		con.conectar(); 
+		List<Departamentos> listarDepartamentos= new ArrayList<Departamentos>();
+		String sql = "SELECT * FROM tb_departamentos;";
+		connection = con.getJdbcConnection();
+		Statement statement = connection.createStatement();
+		ResultSet resulSet = statement.executeQuery(sql);
+		while (resulSet.next()) {
+			int id = resulSet.getInt("idtb_Departamentos");
+			String nombre = resulSet.getString("nombre");
+			Boolean estado = resulSet.getBoolean("estado");
+			Departamentos departamentos = new Departamentos(id, nombre,estado);
+			listarDepartamentos.add(departamentos);
+		}
+       con.desconectar();
+       return listarDepartamentos;
 	}
 
 }

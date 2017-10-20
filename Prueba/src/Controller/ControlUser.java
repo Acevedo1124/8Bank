@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import Entity.Ciudades;
+import Entity.Rol;
 import Entity.Usuario;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import Model.ModeloCiudades;
+import Model.ModeloRol;
 import Model.ModeloUser;
  
 
@@ -23,6 +28,8 @@ import Model.ModeloUser;
 public class ControlUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ModeloUser Objeto_ModeloUser;
+	ModeloRol Objeto_ModeloRol;
+	ModeloCiudades Objeto_ModeloCiudades;
 	String Usr;
 	public void init() {
 		 
@@ -31,6 +38,9 @@ public class ControlUser extends HttpServlet {
 		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 		try {
 		
+			Objeto_ModeloCiudades = new ModeloCiudades(jdbcURL, jdbcUsername, jdbcPassword);
+			Objeto_ModeloRol = new ModeloRol(jdbcURL, jdbcUsername, jdbcPassword);
+
 			Objeto_ModeloUser = new ModeloUser(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (Exception e) {
 		
@@ -58,8 +68,10 @@ public class ControlUser extends HttpServlet {
 				
 				if (accion.equals("Listar"))
 					ListUsuario(request, response);
-				
 				if (accion.equals("Guardar"))
+					Guardar(request, response);
+				
+				if (accion.equals("guardarUser"))
 					GuardarUsuario(request,response);
 				
 				if (accion.equals("Filtrar"))
@@ -67,6 +79,10 @@ public class ControlUser extends HttpServlet {
 				
 				if (accion.equals("Modificar"))
 					ModificarUsuario(request, response);
+				if (accion.equals("guardarCambiosUser"))
+					GuardarCambiosUsuario(request, response);
+				if (accion.equals("Eliminar"))
+					EliminarUser(request, response);
 				
 				if (accion.equals("login"))
 					LoginUsuario(request,response);
@@ -126,25 +142,25 @@ public class ControlUser extends HttpServlet {
 		RequestDispatcher dispatcher;
 		//Al guardar se le pide al usuario el nombre y la descripción, las cuales están como parámetro.
 		int Identificacion = Integer.parseInt(request.getParameter("Identificacion")); 
-		int Estado = Integer.parseInt(request.getParameter("Estado"));
-		int Borrado= Integer.parseInt(request.getParameter("Borrado"));
-		int idCiudades= Integer.parseInt(request.getParameter("tb_Ciudades_idtb_Ciudades"));
-		String Nombre = request.getParameter("Nombre");
-		String Primer_apellido = request.getParameter("Primer_apellido");
-		String Segundo_apellido= request.getParameter("Segundo_apellido");
-		String Mail = request.getParameter("Mail");
-		String Telefono = request.getParameter("Telefono");
-		String Usuario = request.getParameter("Usuario");
-		String Contraseña = request.getParameter("Contraseña");
-		
+		int Estado = 1;
+		int Borrado= 0;
+		String idCiudades= (request.getParameter("txtIdCiudad"));
+		String Nombre = request.getParameter("txtNombre");
+		String Primer_apellido = request.getParameter("txtPrimer_apellido");
+		String Segundo_apellido= request.getParameter("txtSegundo_apellido");
+		String Mail = request.getParameter("txtMail");
+		String Telefono = request.getParameter("txtTelefono");
+		String Usuario = request.getParameter("txtUsuario");
+		String Contraseña = request.getParameter("txtContrasena");
+		String Rol = (request.getParameter("Rol"));
 		Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, 
-									Mail, Telefono, Usuario, Contraseña);
+									Mail, Telefono, Usuario, Contraseña,Rol);
 		
 		try {		
 			//Se llama el mètodo guardar rol y se le lleva el objeto Rol que se va a a guardar.
 			Objeto_ModeloUser.guardarUser(us);
 		
-			dispatcher = request.getRequestDispatcher("ControlUser?action=Listar&guardado="+ Nombre);
+			dispatcher = request.getRequestDispatcher("ControlUser?accion=Listar&guardado="+ Nombre);
 		}
 		catch(Exception e){
 			
@@ -161,10 +177,11 @@ public class ControlUser extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ListUser.jsp");
 		//se crea una lista de roles ya que el filtrado podr
 		List<Usuario> UsuarioTabla;
-		
-		int Identificacion = Integer.parseInt(request.getParameter("FilterIdentificacion")); 
+		int Identificacion =0;
+		if (request.getParameter("FilterIdentificacion")!="")
+			 Identificacion = Integer.parseInt(request.getParameter("FilterIdentificacion"));
 		String Nombre = request.getParameter("FilterNombre");
-
+		System.out.println(Nombre);
 		
 		int Op =0;
 		if (Identificacion!=0)
@@ -190,6 +207,8 @@ public class ControlUser extends HttpServlet {
 		//se despacha al cliente a la página en el dispatcher
 			dispatcher.forward(request, response);
 	}
+	
+	
 	
 	private void BuscarUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 
@@ -218,18 +237,109 @@ public class ControlUser extends HttpServlet {
 	}
 	
 	private void ModificarUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		int Id = Integer.parseInt(request.getParameter("Identificacion")); 
-		try {
-		List <Usuario> UsuarioTabla =  Objeto_ModeloUser.FiltrarUser(Id, "", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("View/ModifyUser.jsp");
-		request.setAttribute("Identificacion", Id);
-		request.setAttribute("Nombre", UsuarioTabla.get(0).getNombre());
-		dispatcher.forward(request, response);
+		List<Rol> ListaRol;
+		List<Ciudades> ListaCuidades;
+		List<Usuario> ListaUsurios;
+		try {
+			ListaRol=Objeto_ModeloRol.ListRol();
+			ListaCuidades=Objeto_ModeloCiudades.listar_ciudades();
+			ListaUsurios=Objeto_ModeloUser.ListUsuario();
+			
+			request.setAttribute("Roles", ListaRol);	
+			request.setAttribute("Ciudades", ListaCuidades);
+			request.setAttribute("Identif", ListaUsurios);
+			request.setAttribute("Usua", ListaUsurios);
+			
+
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al buscar...");
+		}
+		
+		
+		int Id = Integer.parseInt(request.getParameter("id")); 
+		try {
+			List <Usuario> UsuarioTabla =  Objeto_ModeloUser.FiltrarUser(Id, "", 1);
+			request.setAttribute("Ident", Id);
+			request.setAttribute("Nombr", UsuarioTabla.get(0).getNombre());
+			request.setAttribute("PApell", UsuarioTabla.get(0).getPrimer_apellido());
+			request.setAttribute("SApell", UsuarioTabla.get(0).getSegundo_apellido());
+			request.setAttribute("EMail", UsuarioTabla.get(0).getMail());
+			request.setAttribute("Tel", UsuarioTabla.get(0).getTelefono());
+			request.setAttribute("UsuarioDB", UsuarioTabla.get(0).getUsuario());
+			System.out.println(UsuarioTabla.get(0).getUsuario());
+
+			
+			dispatcher.forward(request, response);
 		}
 		catch(Exception e) {
 			
 			System.out.println("ERRROR al buscar...");
 		}
+	}
+	
+	
+
+	private void GuardarCambiosUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		//se pide la página a la cual se despacha al usar este método
+		RequestDispatcher dispatcher;
+		//Al guardar se le pide al usuario el nombre y la descripción, las cuales están como parámetro.
+		int Identificacion = Integer.parseInt(request.getParameter("Identificacion")); 
+		int IdOld = Integer.parseInt(request.getParameter("IdOld")); 
+
+		int Estado = 1;
+		int Borrado= 0;
+		String idCiudades= (request.getParameter("txtIdCiudad"));
+		String Nombre = request.getParameter("txtNombre");
+		String Primer_apellido = request.getParameter("txtPrimer_apellido");
+		String Segundo_apellido= request.getParameter("txtSegundo_apellido");
+		String Mail = request.getParameter("txtMail");
+		String Telefono = request.getParameter("txtTelefono");
+		String Usuario = request.getParameter("txtUsuario");
+		String Contraseña = request.getParameter("txtContrasena");
+		String Rol = (request.getParameter("Rol"));
+		Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, 
+									Mail, Telefono, Usuario, Contraseña,Rol);
+		
+		try {		
+			//Se llama el mètodo guardar rol y se le lleva el objeto Rol que se va a a guardar.
+			Objeto_ModeloUser.ModUser(us,IdOld);
+		
+			dispatcher = request.getRequestDispatcher("ControlUser?accion=Listar&guardado="+ Nombre);
+		}
+		catch(Exception e){
+			
+			dispatcher = request.getRequestDispatcher("View/AddUser.jsp");
+			request.setAttribute("resultado", "Error al guardar el usario " + Nombre);
+			System.out.println("ERRROR al guardar usuario...");
+		}
+		//se despacha al cliente a la página en el dispatcher
+			dispatcher.forward(request, response);
+	}
+	
+	
+	private void EliminarUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		//se pide la página a la cual se despacha al usar este método
+		RequestDispatcher dispatcher;
+		//Al guardar se le pide al usuario el nombre y la descripción, las cuales están como parámetro.
+		int Identificacion = Integer.parseInt(request.getParameter("Id")); 
+		int Borrado= 1;
+		
+		try {		
+			//Se llama el mètodo guardar rol y se le lleva el objeto Rol que se va a a guardar.
+			Objeto_ModeloUser.BorrarUser(Identificacion,Borrado);
+		
+			dispatcher = request.getRequestDispatcher("ControlUser?accion=Listar");
+		}
+		catch(Exception e){
+			
+			dispatcher = request.getRequestDispatcher("View/AddUser.jsp");
+			
+			System.out.println("ERRROR al guardar usuario...");
+		}
+		//se despacha al cliente a la página en el dispatcher
+			dispatcher.forward(request, response);
 	}
 	
 	private void LoginUsuario(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
@@ -265,5 +375,28 @@ public class ControlUser extends HttpServlet {
 		
 			dispatcher.forward(request, response);
 	}
+	private void Guardar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddUser.jsp");
+		List<Rol> ListaRol;
+		List<Ciudades> ListaCuidades;
+		List<Usuario> ListaUsurios;
+		try {
+			ListaRol=Objeto_ModeloRol.ListRol();
+			ListaCuidades=Objeto_ModeloCiudades.listar_ciudades();
+			ListaUsurios=Objeto_ModeloUser.ListUsuario();
+			
+			request.setAttribute("Roles", ListaRol);	
+			request.setAttribute("Ciudades", ListaCuidades);
+			request.setAttribute("Ident", ListaUsurios);
+			request.setAttribute("Usua", ListaUsurios);
+			
+			dispatcher.forward(request, response);
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al buscar...");
+		}
+		
+	}
+	
 }
 

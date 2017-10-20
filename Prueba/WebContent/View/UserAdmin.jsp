@@ -8,9 +8,9 @@ pageEncoding="ISO-8859-1"%>
 	<title>8 Back</title>
 	<!-- Incluyen los archivos de css -->
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/estilos.css">
+	<link rel="stylesheet" href="css/estilos.css">
 
 </head>
 <body>
@@ -18,13 +18,12 @@ pageEncoding="ISO-8859-1"%>
 	<header  > <!-- Encabezado -->
 		<div class="container">
 			<div class="col-md-2">
-				img
-				<img src="img/logo.jpg"  width="130" alt="" class="img-responsive  img-circle">				
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >			
 			</div>
 			<div class="col-md-4">
 				<h1>
 
-					<div class="row">Bienvenido <a id="nombre" value="${nombre}"></a></div>
+					<div class="row">Administrado </div>
 				</h1>
 			</div>
 			
@@ -35,57 +34,32 @@ pageEncoding="ISO-8859-1"%>
 	<div class="conatiner">
 		
 		
-		<div class="col-md-3">
-			<button id="btn_user" class="btn btn-success " onclick="crud_user()" >Usuarios</button><br>
-			<button id="btn_cuidad" class="btn btn-success " onclick="crud_ciudad()" >Ciudad</button><br>
-			<button id="btn_rol" class="btn btn-success " onclick="crud_rol()" >Roles</button><br>
+		<div class="col-md-3"><br><br><br>
+			<button id="btn_user" class="btn btn-success " onclick="location.href = '../ControlUser?accion=Listar'" >Usuarios</button><br><br><br>
+			<button id="btn_rol" class="btn btn-success " onclick="crud_rol()" >Roles</button><br><br><br>
+			<button id="btn_cuidad" class="btn btn-success " onclick="location.href = '../ControlCiudades?action=Listar'" >Ciudad</button><br><br><br>
+			<button id="btn_rol" class="btn btn-success " onclick="location.href = '../ControlDepartamentos'" >Departamentos</button><br><br><br>
 
 
 		</div>
 		<div class="col-md-9">	
 			<h2>	
-				<div class="col-md-9" style="display:none" id="Ver_user"><h1>Ver user</h1></div>
-				<div class="col-md-9" style="display:none" id="Ver_ciudad"><h1>Ver Ver_ciudad</h1></div>
+				<img src="Img/admin.jpg" class="img-rounded"  width="100%" >
 				
 			</h2>
 		</div>
 	</div>
 
 	<script type="text/javascript">
-		function ocultar() {
-
-
-			
-			document.getElementById("Ver_user").style.display = "none";
-			document.getElementById("Ver_ciudad").style.display = "none";
-
-
-
-		}
-
-
-		function crud_user(){
-			ocultar();
-			document.getElementById("Ver_user").style.display = "block";
-
-
-
-		}
-
-		function crud_ciudad(){
-			ocultar();
-			document.getElementById("Ver_ciudad").style.display = "block";
-
-		}
-
-
-
+	window.onload = function(){
+		history.replaceState({}, "page", "/Prueba/View/UserAdmin.jsp");
+	};
 	</script>
 
 
 	<!-- Incluyen los archivos js	 -->
 	<script src="//code.jquery.com/jquery-latest.js"></script> 
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/ventanas.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/ventanas.js"></script>
 </body>
 </html>
