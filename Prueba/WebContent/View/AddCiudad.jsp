@@ -138,6 +138,8 @@ pageEncoding="ISO-8859-1"%>
 	<br/>
 	
 	
-
+<script src="//code.jquery.com/jquery-latest.js"></script> 
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ventanas.js"></script>
 </body>
 </html>
