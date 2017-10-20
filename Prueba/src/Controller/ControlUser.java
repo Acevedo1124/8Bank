@@ -280,12 +280,16 @@ public class ControlUser extends HttpServlet {
 		List<Rol> ListaRol;
 		List<Ciudades> ListaCuidades;
 		try {
-			
+			ListaRol=Objeto_ModeloRol.ListRol();
+			ListaCuidades=Objeto_ModeloCiudades.listar_ciudades();
+			request.setAttribute("Roles", ListaRol);
+			request.setAttribute("Ciudades", ListaCuidades);
+			dispatcher.forward(request, response);
 		}
 		catch(Exception e){
-			
+			System.out.println("ERRROR al buscar...");
 		}
-		request.setAttribute("nombre", us);
+		
 	}
 	
 }

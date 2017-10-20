@@ -53,7 +53,7 @@ pageEncoding="ISO-8859-1"%>
 
 	<script type="text/javascript">
 	window.onload = function(){
-		history.replaceState({}, "page", "View/UserAdmin.jsp");
+		history.replaceState({}, "page", "/Prueba/View/UserAdmin.jsp");
 	};
 	</script>
 
