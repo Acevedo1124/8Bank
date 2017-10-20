@@ -29,7 +29,21 @@ location.href = url;
 	
 }
 </script>
-	<h1>Modificar Usuario</h1>
+	<header  > <!-- Encabezado -->
+		<div class="container">
+			<div class="col-md-2">
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >								
+			</div>
+			<div class="col-md-4">
+				<h1>
+					<div class="row">Modificar Usuario</div>
+				</h1>
+			</div>			
+						
+			</div>
+		</div>		
+	</header>
+	
 		<h3>${resultado}</h3>
 		 <form id="tb_usuario" method="get" name="registro" class="form-horizontal"> 
 	<div class="modal-body"> 
