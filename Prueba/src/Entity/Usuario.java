@@ -2,14 +2,14 @@ package Entity;
 
 public class Usuario {
 	
-	private int Identificacion, Estado, Borrado, idCiudades,Rol;
-	private String Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña;
+	private int Identificacion, Estado, Borrado;
+	private String Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña,idCiudades,Rol;
 	
 	public Usuario() {
 		this.Identificacion = 0;
 		this.Estado = 0;
 		this.Borrado = 0;
-		this.idCiudades = 0;
+		this.idCiudades = "";
 		this.Nombre = "";
 		this.Primer_apellido = "";
 		this.Segundo_apellido = "";
@@ -17,11 +17,12 @@ public class Usuario {
 		this.Telefono = "";
 		this.Usuario = "";
 		this.Contraseña = "";
-		this.Rol =0;
+		this.Rol ="";
+		
 	}
 	
-	public Usuario(int Identificacion,int Estado,int Borrado,int idCiudades,String Nombre,
-				String Primer_apellido,String Segundo_apellido,String Mail,String Telefono,String Usuario,String Contraseña,int Rol) {
+	public Usuario(int Identificacion,int Estado,int Borrado,String idCiudades,String Nombre,
+				String Primer_apellido,String Segundo_apellido,String Mail,String Telefono,String Usuario,String Contraseña,String Rol) {
 		this.Identificacion = Identificacion;
 		this.Estado = Estado;
 		this.Borrado = Borrado;
@@ -39,10 +40,10 @@ public class Usuario {
 	public int getIdentificacion() {
 		return Identificacion;
 	}
-	public void setRol(int Rol) {
+	public void setRol(String Rol) {
 		this.Rol = Rol;
 	}
-	public int getRol() {
+	public String getRol() {
 		return Rol;
 	}
 	public void setIdentificacion(int identificacion) {
@@ -61,10 +62,10 @@ public class Usuario {
 	public void setBorrado(int borrado) {
 		Borrado = borrado;
 	}
-	public int getIdCiudades() {
+	public String getIdCiudades() {
 		return idCiudades;
 	}
-	public void setIdCiudades(int idCiudades) {
+	public void setIdCiudades(String idCiudades) {
 		this.idCiudades = idCiudades;
 	}
 	public String getNombre() {

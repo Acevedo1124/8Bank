@@ -140,7 +140,7 @@ public class ControlUser extends HttpServlet {
 		int Identificacion = Integer.parseInt(request.getParameter("Identificacion")); 
 		int Estado = 1;
 		int Borrado= 0;
-		int idCiudades= Integer.parseInt(request.getParameter("txtIdCiudad"));
+		String idCiudades= (request.getParameter("txtIdCiudad"));
 		String Nombre = request.getParameter("txtNombre");
 		String Primer_apellido = request.getParameter("txtPrimer_apellido");
 		String Segundo_apellido= request.getParameter("txtSegundo_apellido");
@@ -148,7 +148,7 @@ public class ControlUser extends HttpServlet {
 		String Telefono = request.getParameter("txtTelefono");
 		String Usuario = request.getParameter("txtUsuario");
 		String Contraseña = request.getParameter("txtContrasena");
-		int Rol = Integer.parseInt(request.getParameter("Rol"));
+		String Rol = (request.getParameter("Rol"));
 		Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, 
 									Mail, Telefono, Usuario, Contraseña,Rol);
 		

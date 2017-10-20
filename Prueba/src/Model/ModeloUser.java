@@ -36,7 +36,7 @@ public class ModeloUser {
 		//se crea la lista, en la cual se almacenarán los resultados de la consulta
 		List<Usuario> listaUser= new ArrayList<Usuario>();
 		//Se crea el string de la consulta
-		String sql = "SELECT * FROM tb_usuario where Borrado = 0";
+		String sql = "SELECT * FROM tb_usuario as usu inner Join tb_ciudades as ciu on usu.tb_Ciuadades_idtb_Ciuadades=ciu.idtb_Ciudades inner Join tb_rol as rol on usu.tb_rol_idtb_rol=rol.idtb_rol where usu.Borrado=0;";
 		//se obtiene la conexión y se ejecuta el query
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();
@@ -47,18 +47,18 @@ public class ModeloUser {
 		//en el List de Rol que creamos anteriormente
 		while (resulSet.next()) {
 			int Identificacion = resulSet.getInt("Identificacion");
-			int Estado = resulSet.getInt("Estado");
+			int Estado = resulSet.getInt("usu.Estado");
 			int Borrado= resulSet.getInt("Borrado");
-			int idCiudades= resulSet.getInt("tb_Ciuadades_idtb_Ciuadades");
+			String idCiudades= resulSet.getString("ciu.nombre");
 			
-			String Nombre = resulSet.getString("Nombre");
+			String Nombre = resulSet.getString("usu.Nombre");
 			String Primer_apellido = resulSet.getString("Primer_apellido");
 			String Segundo_apellido= resulSet.getString("Segundo_apellido");
 			String Mail = resulSet.getString("Mail");
 			String Telefono = resulSet.getString("Telefono");
 			String Usuario = resulSet.getString("Usuario");
 			String Contraseña = resulSet.getString("Contraseña");
-			int Rol = resulSet.getInt("tb_rol_idtb_rol");
+			String Rol = resulSet.getString("rol.nombre");
 			//se crea el constructor de la clase Usuario
 			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña,Rol);
 			//Se almacenan en la lista
@@ -102,7 +102,7 @@ public class ModeloUser {
 			int Identificacion = resulSet.getInt("Identificacion");
 			int Estado = resulSet.getInt("Estado");
 			int Borrado= resulSet.getInt("Borrado");
-			int idCiudades= resulSet.getInt("tb_Ciudades_idtb_Ciudades");
+			String idCiudades= resulSet.getString("tb_Ciudades_idtb_Ciudades");
 			String Nombre = resulSet.getString("Nombre");
 			String Primer_apellido = resulSet.getString("Primer_apellido");
 			String Segundo_apellido= resulSet.getString("Segundo_apellido");
@@ -110,7 +110,7 @@ public class ModeloUser {
 			String Telefono = resulSet.getString("Telefono");
 			String Usuario = resulSet.getString("Usuario");
 			String Contraseña = resulSet.getString("Contraseña");
-			int Rol = resulSet.getInt("tb_rol_idtb_rol");
+			String Rol = resulSet.getString("tb_rol_idtb_rol");
 			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña, Rol);
 			
 			listaUser.add(us);
