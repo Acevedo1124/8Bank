@@ -5,12 +5,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-		<form action="/Prueba/ControlDepartamentos" method="get">
-		<input type="text" name="txtNombre">
+<header  > <!-- Encabezado -->
+		<div class="container">
+			<div class="col-md-2">
+				<img src="Img/G8.jpg" class="img-rounded"  width="100%" >								
+			</div>
+			<div class="col-md-4">
+				<h1>
+					<div class="row">Agregar Ciudades</div>
+				</h1>
+			</div>		
+		</div>			
+	</header>
+	<div class="container"> 
+		<form action="/Prueba/ControlDepartamentos" method="get" class="form-horizontal">
+		<label for="nombre" class="control-label col-md-2">Digite nombre:</label>			
+				<div class="col-md-10">
+					<input type="text" name="txtNombre" class="form-control" placeholder="Nombre" required="required">
+					<button type="submit" class="btn btn-primary" name="action" value="Guardar">Guardar</button>
+				</div>
+		
 
-<button type="submit" name="action" value="Guardar">Guardar</button>
+
 </form>
+</div>
+
+<script src="//code.jquery.com/jquery-latest.js"></script> 
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ventanas.js"></script>
 </body>
 </html>
