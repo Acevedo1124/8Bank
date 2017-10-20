@@ -53,17 +53,20 @@ function GuardarRol(){
 	<div class="container"> 
 		<div action="" class="form-horizontal">
 			<div class="form-group">
-				<label for="nombre" class="control-label col-md-2">Digite nombre:</label>
-			</div>
-			<div class="col-md-10">
-				<input type="text" id="txtNombre" class="form-control" placeholder="Nombre" required="required">
-			</div>
-			<label for="nombre" class="control-label col-md-2">Descripción:</label>
-			<div class="col-md-10">
-				<textarea id="txtDescripcion" class="form-control" height: 31px;" cols="" rows="1" style="" placeholder="Descripción" required="required"></textarea>
+			
+				<label for="nombre" class="control-label col-md-2">Digite nombre:</label>			
+				<div class="col-md-10">
+					<input type="text" id="txtNombre" class="form-control" placeholder="Nombre" required="required">
+				</div>
+				
+				<label for="nombre" class="control-label col-md-2">Descripción:</label>
+				<div class="col-md-10">
+					<textarea id="txtDescripcion" class="form-control"   rows="3" placeholder="Descripción" required="required"></textarea>
+				</div>
+				
 			</div>
 			<br>
-			<br>
+			
 			<div class="form-gruop ">
 				<div class="col-md-2 col-md-offset-2">
 					<input type="submit" value="Guardar" class="btn btn-primary" onclick="GuardarRol()"/>
