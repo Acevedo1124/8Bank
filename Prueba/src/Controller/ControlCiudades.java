@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import Entity.Ciudades;
-import Entity.Rol;
+import Entity.Departamentos;
 import Model.ModeloCiudades;
 
 @WebServlet("/ControlCiudades")
@@ -72,10 +72,9 @@ public class ControlCiudades extends HttpServlet {
 	
 	private void GuardarCiudad(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
 		RequestDispatcher dispatcher;
-		int id = Integer.parseInt(request.getParameter("txtId"));
 		String nombre = request.getParameter("txtNombre");
 		int departamento = Integer.parseInt(request.getParameter("txtDepartamento"));
-		Ciudades ciudad = new Ciudades(id, nombre, departamento);
+		Ciudades ciudad = new Ciudades(0, nombre, departamento);
 		try {
 			Objeto_ModeloCiudades.guardar_ciudad(ciudad);
 			dispatcher = request.getRequestDispatcher("ControlCiudades?action=Listar&guardado="+nombre);
@@ -195,6 +194,23 @@ public class ControlCiudades extends HttpServlet {
 			request.setAttribute("IdCiudad", CiudadTabla.get(0).getId_ciudad());
 			request.setAttribute("nombre", CiudadTabla.get(0).getNombre());
 			request.setAttribute("id_departamento", CiudadTabla.get(0).getId_departamento());
+		}
+		catch(Exception e){
+			System.out.println("ERRROR al consultar...");
+		}
+			dispatcher.forward(request, response);
+	}
+	
+	private void ListarDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("View/AddCiudad.jsp");
+		List<Departamentos> ListaDepartamentos;
+		String Id = request.getParameter("");
+		String Nombre = request.getParameter("");
+		try {
+			ListaDepartamentos =  Objeto_ModeloCiudades.Listar_departamentos(Id, Nombre);
+			request.setAttribute("IdDepar", ListaDepartamentos.get(0).getIdDpto());
+			request.setAttribute("nombre", ListaDepartamentos.get(0).getNombreDpto());
+			request.setAttribute("id_departamento", ListaDepartamentos.get(0).getEstadoDpto());
 		}
 		catch(Exception e){
 			System.out.println("ERRROR al consultar...");

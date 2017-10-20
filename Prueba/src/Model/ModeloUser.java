@@ -58,9 +58,9 @@ public class ModeloUser {
 			String Telefono = resulSet.getString("Telefono");
 			String Usuario = resulSet.getString("Usuario");
 			String Contraseña = resulSet.getString("Contraseña");
-		
+			int Rol = resulSet.getInt("tb_rol_idtb_rol");
 			//se crea el constructor de la clase Usuario
-			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña);
+			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña,Rol);
 			//Se almacenan en la lista
 			listaUser.add(us);
 		}
@@ -110,8 +110,8 @@ public class ModeloUser {
 			String Telefono = resulSet.getString("Telefono");
 			String Usuario = resulSet.getString("Usuario");
 			String Contraseña = resulSet.getString("Contraseña");
-			
-			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña);
+			int Rol = resulSet.getInt("tb_rol_idtb_rol");
+			Usuario us = new Usuario(Identificacion, Estado, Borrado, idCiudades,Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña, Rol);
 			
 			listaUser.add(us);
 		}
@@ -221,8 +221,8 @@ public class ModeloUser {
 	    	//se prepara el string de la consulta, solo se agrega nombre y descripción
 	    	// ya que el ID es un valor auto-incremento y no es necesario especificarlo
 	    	
-	    	String sql= "INSERT INTO `tb_usuario` (`Identificacion`, `Nombre`, `Primer_apellido`, `Segundo_apellido`, `Mail`, `Telefono`, `Usuario`, `Contraseña`, `Estado`, `Borrado`, `tb_Ciuadades_idtb_Ciuadades`) VALUES\r\n" + 
-	    			"("+UserNuevo.getIdentificacion()+",'"+UserNuevo.getNombre()+"','"+UserNuevo.getPrimer_apellido()+"','"+UserNuevo.getSegundo_apellido()+"','"+UserNuevo.getMail()+"','"+UserNuevo.getTelefono()+"','"+UserNuevo.getUsuario()+"','"+UserNuevo.getContraseña()+"',"+UserNuevo.getEstado()+","+UserNuevo.getBorrado()+",'"+UserNuevo.getIdCiudades()+");";
+	    	String sql= "INSERT INTO tb_usuario (Identificacion, Nombre, Primer_apellido, Segundo_apellido, Mail, Telefono, Usuario, Contraseña, Estado, Borrado, tb_Ciuadades_idtb_Ciuadades, tb_rol_idtb_rol ) VALUES\r\n" + 
+	    			"("+UserNuevo.getIdentificacion()+",'"+UserNuevo.getNombre()+"','"+UserNuevo.getPrimer_apellido()+"','"+UserNuevo.getSegundo_apellido()+"','"+UserNuevo.getMail()+"','"+UserNuevo.getTelefono()+"','"+UserNuevo.getUsuario()+"','"+UserNuevo.getContraseña()+"',"+UserNuevo.getEstado()+","+UserNuevo.getBorrado()+",'"+UserNuevo.getIdCiudades()+","+UserNuevo.getRol()+");";
 	    st.execute(sql); 
 	    st.close();
 	    //se ejecuta y se  cierra tanto el statement como la conexiòn

@@ -34,7 +34,7 @@ function Filtrarusuario(){
 <div></div>
 	<h1>Listado de usuarios</h1>
 	<h3>${resultado}</h3>
-	<input type="button" style="heigth:2em;" value="Agregar un registro" onclick="location.href='View/Adduser.jsp'"/>
+	<input type="button" style="heigth:2em;" value="Agregar un registro" onclick="location.href='View/AddUser.jsp'"/>
 	<br/><br/>
 	<input type="text" id="FilterIdentificacion" placeholder="Filtrar por identificacion " onkeyup="if (event.keyCode == 13)Filtrarusuario()"/>
 	<input type="text" id="FilterNombre" placeholder="Filtrar por Nombre" onkeyup="if (event.keyCode == 13)Filtrarusuario()"/>
@@ -50,13 +50,10 @@ function Filtrarusuario(){
 		 <td><strong>usuario</strong></td>
 		 <td><strong>Estado</strong></td>
 		 <td><strong>Id ciudad</strong></td>
+		 <td><strong>Id Rol</strong></td>
 		</tr>
 		<c:forEach var="usr" items="${lista}">
-		<script type="text/javascript">
-		
-		alert("aqui");
-		</script>
-		
+
 			<tr>
 				<td><c:out value="${usr.getIdentificacion()}"/></td>
 				<td><c:out value="${usr.getNombre()}"/></td>
@@ -67,6 +64,7 @@ function Filtrarusuario(){
 				<td><c:out value="${usr.getUsuario()}"/></td>
 				<td><c:out value="${usr.getEstado()}"/></td>
 				<td><c:out value="${usr.getIdCiudades()}"/></td>
+				<td><c:out value="${usr.getRol()}"/></td>
 				<td><a href="ControlUser?accion=Modificar&id=${usr.getIdentificacion()}">Editar </a> </td>
 			</tr>
 		</c:forEach>
