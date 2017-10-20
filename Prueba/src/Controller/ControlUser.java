@@ -15,7 +15,9 @@ import Entity.Ciudades;
 import Entity.Rol;
 import Entity.Usuario;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Model.ModeloCiudades;
 import Model.ModeloRol;
@@ -282,7 +284,9 @@ public class ControlUser extends HttpServlet {
 		try {
 			ListaRol=Objeto_ModeloRol.ListRol();
 			ListaCuidades=Objeto_ModeloCiudades.listar_ciudades();
-			request.setAttribute("Roles", ListaRol);
+		
+			
+			request.setAttribute("Roles", ListaRol);	
 			request.setAttribute("Ciudades", ListaCuidades);
 			dispatcher.forward(request, response);
 		}

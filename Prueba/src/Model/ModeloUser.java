@@ -36,7 +36,7 @@ public class ModeloUser {
 		//se crea la lista, en la cual se almacenarán los resultados de la consulta
 		List<Usuario> listaUser= new ArrayList<Usuario>();
 		//Se crea el string de la consulta
-		String sql = "SELECT * FROM tb_usuario";
+		String sql = "SELECT * FROM tb_usuario where Borrado = 0";
 		//se obtiene la conexión y se ejecuta el query
 		connection = con.getJdbcConnection();
 		Statement statement = connection.createStatement();

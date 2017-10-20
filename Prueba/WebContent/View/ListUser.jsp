@@ -34,7 +34,7 @@ function Filtrarusuario(){
 <div></div>
 	<h1>Listado de usuarios</h1>
 	<h3>${resultado}</h3>
-	<input type="button" style="heigth:2em;" value="Agregar un registro" onclick="location.href='View/AddUser.jsp'"/>
+	<input type="button" style="heigth:2em;" value="Agregar un registro" onclick="location.href='ControlUser?accion=Guardar'"/>
 	<br/><br/>
 	<input type="text" id="FilterIdentificacion" placeholder="Filtrar por identificacion " onkeyup="if (event.keyCode == 13)Filtrarusuario()"/>
 	<input type="text" id="FilterNombre" placeholder="Filtrar por Nombre" onkeyup="if (event.keyCode == 13)Filtrarusuario()"/>
